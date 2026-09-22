@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3 - Tabla</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Horario semanal</h1>
+    <table>
+        <!-- Encabezado de la tabla -->
+        <thead>
+            <tr>
+                <th>Hora</th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+            </tr>
+        </thead>
+        <!-- Cuerpo -->
+        <tbody>
+            <tr>
+                <th>08:00 - 10:00</th>
+                <td>Programación</td>
+                <td>Base de Datos</td>
+                <td>Programación</td>
+                <td>UX/UI</td>
+                <td>Redes</td>
+            </tr>
+            <tr>
+                <th>10:00 - 12:00</th>
+                <!-- rowspan: esta celda ocupa 2 filas -->
+                <td rowspan="2">Álgebra</td>
+                <td>Inglés</td>
+                <td>Base de Datos</td>
+                <td>Álgebra</td>
+                <td>Programación</td>
+            </tr>
+            <tr>
+                <th>12:00 - 14:00</th>
+                <!-- colspan: esta celda ocupa 3 columnas -->
+                <td colspan="3">Taller integrador</td>
+                <td>Libre</td>
+            </tr>
+        </tbody>
+        <!-- Pie de tabla -->
+        <tfoot>
+            <tr>
+                <td colspan="6">Total: 5 días de cursada</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

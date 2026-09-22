@@ -1,0 +1,17 @@
+body {
+    background-color: #f5f5dc;   /* color de fondo */
+    color: #333;                 /* color de texto */
+    font-family: 'Georgia', serif; /* tipografía */
+    font-size: 16px;
+    padding: 20px;
+}
+h1 {
+    color: #b8860b;
+    font-size: 2.5rem;           /* 2.5 veces el tamaño base */
+    text-align: center;
+}
+img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
