@@ -1,0 +1,18 @@
+* { box-sizing: border-box; margin: 0; }
+
+.layout {
+    display: grid;
+    /* Definimos áreas nombradas */
+    grid-template-areas:
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+    grid-template-columns: 200px 1fr;   /* sidebar fijo, main flexible */
+    grid-template-rows: 60px 1fr 50px;  /* header, contenido, footer */
+    min-height: 100vh;
+    gap: 10px;
+}
+header { grid-area: header; background: #1a73e8; color: white; padding: 16px; }
+aside  { grid-area: sidebar; background: #eee; padding: 16px; }
+main   { grid-area: main; background: #fafafa; padding: 16px; }
+footer { grid-area: footer; background: #333; color: white; padding: 16px; text-align: center; }

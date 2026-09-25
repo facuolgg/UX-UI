@@ -1,0 +1,32 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; padding: 20px; background: #f4f6f8; }
+h1 { margin-bottom: 20px; }
+
+.mosaico {
+    display: grid;
+    /* Columnas que se auto-rellenan, mínimo 180px */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    /* Altura base de cada "celda" */
+    grid-auto-rows: 180px;
+    /* dense: rellena huecos con items pequeños */
+    grid-auto-flow: dense;
+    gap: 12px;
+}
+
+.item {
+    overflow: hidden;
+    border-radius: 8px;
+    background: #ddd;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* la imagen cubre toda la celda sin deformarse */
+    display: block;
+}
+
+/* Modificadores de tamaño */
+.grande { grid-column: span 2; grid-row: span 2; } /* item que ocupa dos filas y dos columnas */
+.alto   { grid-row: span 2; } /* item que ocupa dos filas */
+.ancho  { grid-column: span 2; } /* item que ocupa dos columnas */

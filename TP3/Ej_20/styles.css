@@ -1,0 +1,250 @@
+/* =====================================================
+   1. VARIABLES Y RESET
+   ===================================================== */
+:root {
+    --color-primario: #1a4f8b;
+    --color-acento: #ffd166;
+    --color-texto: #222;
+    --color-fondo: #ffffff;
+    --color-gris: #f4f6f8;
+    --espaciado: 24px;
+    --radio: 10px;
+    --fuente: 'Segoe UI', system-ui, sans-serif;
+    --sombra: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+    font-family: var(--fuente);
+    color: var(--color-texto);
+    background: var(--color-fondo);
+    line-height: 1.6;
+}
+
+h1, h2, h3 { line-height: 1.2; }
+h2 { font-size: 2rem; margin-bottom: var(--espaciado); text-align: center; }
+
+/* =====================================================
+   2. NAVBAR FIJA
+   ===================================================== */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background: rgba(26,79,139,0.95);
+    backdrop-filter: blur(6px);
+    color: white;
+    z-index: 1000;
+}
+
+.logo { font-size: 1.4rem; font-weight: bold; }
+.logo span { color: var(--color-acento); }
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--color-acento); }
+
+/* =====================================================
+   3. HERO
+   ===================================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px 40px;
+    color: white;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('https://picsum.photos/1600/900?random=hero') center/cover no-repeat;
+}
+
+.hero-content { max-width: 700px; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 16px; }
+.hero p  { font-size: 1.15rem; margin-bottom: 24px; }
+
+.btn-primary {
+    display: inline-block;
+    background: var(--color-acento);
+    color: var(--color-primario);
+    padding: 12px 28px;
+    border-radius: var(--radio);
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* =====================================================
+   4. SECCIONES GENERALES
+   ===================================================== */
+.seccion {
+    padding: 80px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#servicios   { background: var(--color-fondo); }
+#testimonios { background: var(--color-gris); max-width: none; }
+#contacto    { background: var(--color-fondo); }
+
+/* =====================================================
+   5. SERVICIOS EN GRID
+   ===================================================== */
+.grid-servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--espaciado);
+}
+
+.servicio {
+    background: white;
+    padding: var(--espaciado);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    text-align: center;
+    transition: transform 0.25s;
+}
+.servicio:hover { transform: translateY(-4px); }
+
+.icono { font-size: 2.5rem; margin-bottom: 8px; }
+
+/* =====================================================
+   6. CARRUSEL CON SCROLL-SNAP
+   ===================================================== */
+.carrusel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px 0 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    scrollbar-width: thin;
+}
+
+.testimonio {
+    flex: 0 0 320px;
+    scroll-snap-align: center;
+    background: white;
+    padding: var(--espaciado);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+.testimonio p { font-style: italic; margin-bottom: 12px; }
+.testimonio cite { font-size: 0.9rem; color: #555; }
+
+/* =====================================================
+   7. FORMULARIO
+   ===================================================== */
+.form-contacto {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.campo { display: flex; flex-direction: column; }
+.campo label { font-weight: 600; margin-bottom: 4px; font-size: 0.9rem; }
+
+.campo input,
+.campo textarea {
+    padding: 10px 12px;
+    border: 2px solid #d0d7de;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(26,79,139,0.2);
+}
+.campo input:invalid:not(:placeholder-shown),
+.campo textarea:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+}
+
+/* =====================================================
+   8. FOOTER
+   ===================================================== */
+.footer {
+    background: #1a1a1a;
+    color: #ccc;
+    text-align: center;
+    padding: 24px;
+    font-size: 0.9rem;
+}
+
+/* =====================================================
+   9. ANIMACIÓN DE APARICIÓN DEL HERO
+   ===================================================== */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content {
+    animation: fadeUp 0.9s ease-out both;
+}
+
+/* =====================================================
+   10. MEDIA QUERIES
+   ===================================================== */
+
+/* Tablet / Mobile grande */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 16px;
+    }
+
+    .nav-links {
+        gap: 14px;
+        font-size: 0.9rem;
+    }
+
+    .hero h1 { font-size: 2rem; }
+    .seccion { padding: 60px 16px; }
+
+    html { scroll-padding-top: 130px; }
+}
+
+/* Mobile chico */
+@media (max-width: 480px) {
+    .nav-links { gap: 10px; }
+    .logo { font-size: 1.1rem; }
+
+    .testimonio { flex: 0 0 260px; }
+
+    .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+}

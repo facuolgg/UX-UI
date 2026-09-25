@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 20 - Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===================== NAVBAR FIJA ===================== -->
+    <header class="navbar">
+        <div class="logo">UX<span>Studio</span></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ===================== HERO ===================== -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Diseñamos experiencias digitales</h1>
+                <p>Estudio de UX/UI enfocado en productos claros, accesibles y hermosos.</p>
+                <a href="#contacto" class="btn-primary">Trabajemos juntos</a>
+            </div>
+        </section>
+
+        <!-- ===================== SERVICIOS ===================== -->
+        <section id="servicios" class="seccion">
+            <h2>Servicios</h2>
+            <div class="grid-servicios">
+                <article class="servicio">
+                    <div class="icono">🎨</div>
+                    <h3>Diseño UI</h3>
+                    <p>Interfaces limpias y consistentes.</p>
+                </article>
+                <article class="servicio">
+                    <div class="icono">🧠</div>
+                    <h3>Research UX</h3>
+                    <p>Entendemos a tus usuarios antes de diseñar.</p>
+                </article>
+                <article class="servicio">
+                    <div class="icono">⚡</div>
+                    <h3>Prototipos</h3>
+                    <p>Iteramos rápido con prototipos interactivos.</p>
+                </article>
+                <article class="servicio">
+                    <div class="icono">📱</div>
+                    <h3>Responsive</h3>
+                    <p>Diseño adaptado a cualquier pantalla.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===================== TESTIMONIOS (carrusel scroll-snap) ===================== -->
+        <section id="testimonios" class="seccion">
+            <h2>Testimonios</h2>
+            <div class="carrusel">
+                <blockquote class="testimonio">
+                    <p>"Trabajar con UXStudio cambió nuestra forma de ver el producto."</p>
+                    <cite>— Ana Gómez, CTO en TechCo</cite>
+                </blockquote>
+                <blockquote class="testimonio">
+                    <p>"Entregaron a tiempo y con una calidad impecable."</p>
+                    <cite>— Luis Pérez, Fundador de StartupX</cite>
+                </blockquote>
+                <blockquote class="testimonio">
+                    <p>"El mejor equipo de diseño con el que trabajamos."</p>
+                    <cite>— Marta Ruiz, PM en FinApp</cite>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACTO ===================== -->
+        <section id="contacto" class="seccion">
+            <h2>Contacto</h2>
+            <form action="#" method="post" class="form-contacto">
+                <div class="campo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="campo">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="campo">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <p>© 2026 UXStudio — Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+.contenedor-tooltip {
+    position: relative;   /* el padre sirve de referencia */
+    display: inline-block;
+    margin: 40px;
+}
+.tooltip {
+    position: absolute;   /* se posiciona respecto al padre */
+    bottom: 120%;         /* arriba del botón */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;           /* oculto por defecto */
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 10;          /* por encima de otros elementos */
+}
+.contenedor-tooltip:hover .tooltip {
+    opacity: 1;           /* aparece al hacer hover */
+}
+
+.volver-arriba {
+    position: fixed;      /* fijo respecto a la ventana */
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #1a73e8;
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 100;
+}

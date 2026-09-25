@@ -1,0 +1,72 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================
+   ESTILOS BASE (DESKTOP)
+   Sidebar visible y layout de 2 columnas
+   ============================ */
+.layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 80px 1fr 60px;
+    grid-template-areas:
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+    min-height: 100vh;
+    gap: 10px;
+    padding: 10px;
+    background: #eef2f7;
+}
+
+/* Asignamos cada etiqueta a su área del grid */
+.layout header { grid-area: header;  background: #1a4f8b; color: white; }
+.layout aside  { grid-area: sidebar; background: #dfe6ef; }
+.layout main   { grid-area: main;    background: white; }
+.layout footer { grid-area: footer;  background: #333;    color: white; }
+/* Se le asigna .layout para limitar el selector a los hijos directos del layout. En caso de que quiera agregar otro header o footer, .layout me facilita si no quiero que aplique este estilo.
+
+/* Estilo visual común a los 4 bloques */
+.layout > * {
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================
+   BREAKPOINT 1 — Tablets
+   Hasta 1024px: achicamos la sidebar
+   ============================ */
+@media (max-width: 1024px) {
+    .layout {
+        grid-template-columns: 160px 1fr;
+    }
+}
+
+/* ============================
+   BREAKPOINT 2 — Celulares
+   Hasta 768px: sidebar desaparece y todo pasa a 1 columna
+   ============================ */
+@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+    }
+
+    .layout aside {
+        display: none;
+    }
+}
+
+/* JUSTIFICACIÓN DEL ENFOQUE DESKTOP FIRST:
+Se eligió este enfoque debido a que la consigna pide explícitamente que si la pantalla es menor a 768px, el sidebar debe desaparecer. Por lo tanto, es más acercado a
+lo que pide que se establezca un @media (max-width) para luego ir achicando y sobreescribiendo lo que haga falta para pantallas más pequeñas. 

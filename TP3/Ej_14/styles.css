@@ -1,0 +1,36 @@
+/* Variables globales en :root */
+:root {
+    --color-primario: #1a73e8;
+    --color-secundario: #b12704;
+    --color-fondo: #ffffff;
+    --color-texto: #222222;
+    --espaciado: 16px;
+    --radio: 8px;
+}
+
+/* Modo oscuro: redefinimos las variables */
+body.modo-oscuro {
+    --color-fondo: #121212;
+    --color-texto: #f0f0f0;
+    --color-primario: #64b5f6;
+}
+
+* { box-sizing: border-box; }
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: system-ui, sans-serif;
+    padding: var(--espaciado);
+    transition: background-color 0.3s, color 0.3s;
+}
+header { margin-bottom: var(--espaciado); }
+h1 { color: var(--color-primario); }
+
+.btn-primario {
+    background: var(--color-primario);
+    color: white;
+    border: none;
+    padding: calc(var(--espaciado) / 2) var(--espaciado);
+    border-radius: var(--radio);
+    cursor: pointer;
+}

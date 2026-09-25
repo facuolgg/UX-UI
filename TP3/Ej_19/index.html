@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 19 - Formulario multi-step</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Registro en 2 pasos</h1>
+
+    <div class="steps">
+        <!-- Los radios controlan qué paso se ve -->
+        <input type="radio" name="paso" id="paso1" checked hidden>
+        <input type="radio" name="paso" id="paso2" hidden>
+
+        <!-- Navegación entre pasos (labels) -->
+        <div class="tabs">
+            <label for="paso1">1. Datos personales</label>
+            <label for="paso2">2. Cuenta</label>
+        </div>
+
+        <form action="#" method="post" novalidate>
+            <!-- PASO 1 -->
+            <section class="step step-1">
+                <div class="campo">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required minlength="3">
+                </div>
+                <div class="campo">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <label for="paso2" class="btn-siguiente">Siguiente →</label>
+            </section>
+
+            <!-- PASO 2 -->
+            <section class="step step-2">
+                <div class="campo">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" id="usuario" name="usuario" required minlength="4">
+                </div>
+                <div class="campo">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required minlength="6">
+                </div>
+                <button type="submit" class="btn-enviar">Crear cuenta</button>
+            </section>
+        </form>
+    </div>
+</body>
+</html>

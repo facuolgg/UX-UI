@@ -1,0 +1,22 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.navbar {
+    display: flex;                    /* activa Flexbox */
+    justify-content: space-between;   /* logo a la izq, menú a la der */
+    align-items: center;              /* centrado vertical */
+    padding: 12px 24px;
+    background: #1a73e8;
+    color: white;
+}
+.logo { font-weight: bold; font-size: 1.4rem; }
+
+.menu {
+    display: flex;                    /* menú horizontal */
+    gap: 20px;
+    list-style: none;                 /* quita viñetas */
+}
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+.menu a:hover { text-decoration: underline; }

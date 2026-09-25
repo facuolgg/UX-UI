@@ -1,0 +1,35 @@
+.enlaces {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+}
+.enlaces li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+.enlaces a {
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    padding-left: 24px;
+    transition: color 0.2s;
+}
+/* Pseudo-elemento ::before: agrega un ícono antes del enlace */
+.enlaces a::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #1a73e8;
+    transition: transform 0.2s;
+}
+/* Pseudo-clase :hover */
+.enlaces a:hover {
+    color: #1a73e8;
+}
+.enlaces a:hover::before {
+    transform: translateX(4px);   /* mueve la flecha */
+}
+/* Pseudo-clase :nth-child: filas pares con fondo distinto */
+.enlaces li:nth-child(even) {
+    background: #f9f9f9;
+}
