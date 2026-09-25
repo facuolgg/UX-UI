@@ -1,0 +1,38 @@
+/* ============================================
+   1) SELECTOR DE CLASE
+   Aplica a TODOS los elementos con class="card"
+   Especificidad: (0,1,0)
+   ============================================ */
+.card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 8px 0;
+    border-radius: 6px;
+    background-color: #fafafa;   /* color base */
+}
+
+/* ============================================
+   2) SELECTOR DE ID
+   Aplica SOLO al elemento con id="principal"
+   Especificidad: (1,0,0) → GANA sobre .card
+   ============================================ */
+#principal {
+    background-color: #e3f2fd;   /* sobreescribe el fondo de .card */
+    border-color: #1a73e8;
+}
+
+/* ============================================
+   3) SELECTOR DESCENDIENTE
+   Aplica a los <p> que estén DENTRO de .card
+   Especificidad: (0,1,1)
+   ============================================ */
+.card p {
+    color: #0d47a1;
+    font-weight: 600;
+}
+
+/* Otro descendiente: <span> dentro de .card */
+.card span {
+    color: #b71c1c;
+    text-decoration: underline;
+}

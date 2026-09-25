@@ -1,0 +1,17 @@
+table {
+    border-collapse: collapse;   /* une los bordes de celdas */
+    width: 100%;
+    max-width: 800px;
+}
+th, td {
+    border: 1px solid #999;
+    padding: 8px 12px;
+    text-align: center;
+}
+thead {
+    background-color: #f0f0f0;
+}
+tfoot {
+    background-color: #e0e0e0;
+    font-weight: bold;
+}
