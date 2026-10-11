@@ -63,10 +63,10 @@ La configuración de headers y caché se encuentra en `netlify.toml`.
 
 Marcar cada criterio solo después de completar la prueba correspondiente. Los valores son umbrales de aceptación, no resultados de mediciones todavía no registradas.
 
-- [ ] Las nueve áreas visuales están implementadas y aprobadas contra Figma.
+- [x] Las nueve áreas visuales están implementadas y aprobadas contra Figma.
 - [ ] El validador W3C informa **0 errores HTML** y **0 errores CSS**.
-- [ ] Lighthouse alcanza **Performance ≥ 90** y **Accessibility, Best Practices y SEO ≥ 95**.
+- [x] Lighthouse alcanza **Performance ≥ 90** y **Accessibility, Best Practices y SEO ≥ 95**.
 - [x] El proyecto no contiene JavaScript (sin archivos JS ni scripts en el marcado).
 - [ ] No hay valores de diseño fuera de los tokens definidos en `css/tokens.css`.
 - [ ] La landing y la página 404 fueron probadas en Chrome, Firefox, Safari y Samsung Internet.
-- [ ] El sitio está publicado en Netlify con HTTPS y Deploy Previews habilitadas.
+- [x] El sitio está publicado en Netlify con HTTPS y Deploy Previews habilitadas.
