@@ -70,3 +70,6 @@ Marcar cada criterio solo después de completar la prueba correspondiente. Los v
 - [ ] No hay valores de diseño fuera de los tokens definidos en `css/tokens.css`.
 - [ ] La landing y la página 404 fueron probadas en Chrome, Firefox, Safari y Samsung Internet.
 - [x] El sitio está publicado en Netlify con HTTPS y Deploy Previews habilitadas.
+
+## DESVIACIÓN DEL PRD (moneda):
+- Se cambió "Rs." (rupias) por "$" (pesos argentinos), según decisión abierta en el PRD (sección 11).
