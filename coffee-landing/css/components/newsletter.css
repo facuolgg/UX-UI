@@ -1,0 +1,118 @@
+@layer components {
+  .newsletter {
+    background: var(--color-sand);
+    padding-block: 3.125rem;
+  }
+
+  .newsletter__inner {
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 2.5rem 1rem;
+    border-radius: var(--radius-card);
+      background: var(--color-white-soft);
+  }
+
+  .newsletter__decor {
+    display: none;
+  }
+
+  .newsletter__content {
+    text-align: center;
+  }
+
+  .newsletter__eyebrow {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-maroon);
+  }
+
+  .newsletter__content h2 {
+    margin-bottom: 0.625rem;
+    font-family: var(--font-ui);
+    font-size: clamp(2rem, 1.5rem + 1vw, 2.5rem);
+    font-weight: 600;
+    color: var(--color-espresso);
+  }
+
+  .newsletter__content p:last-of-type {
+    max-width: 31.25rem;
+    margin: 0 auto 1.5rem;
+    color: var(--color-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .newsletter__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 35rem;
+    margin-inline: auto;
+  }
+
+  .newsletter__form input {
+    width: 100%;
+    min-height: var(--touch-target);
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-border-stronger);
+    padding: 0.875rem 1.25rem;
+    background: var(--color-bg);
+    color: var(--color-espresso);
+    box-shadow: none;
+  }
+
+  .newsletter__form input:user-invalid {
+    border-color: var(--color-danger);
+    box-shadow: 0 0 0 1px var(--color-danger-soft);
+  }
+
+  .newsletter__form button {
+    min-height: var(--touch-target);
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--color-espresso);
+    color: var(--color-white);
+  }
+
+  /* md and above ≥ 768px: put the form on one line and show coffee-bean art. */
+  @media (min-width: 48rem) {
+    .newsletter__inner {
+      grid-template-columns: 1fr 2.3fr 1fr;
+      padding-inline: 1.5rem;
+    }
+
+    .newsletter__decor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color-ink-18);
+      transform: scale(1.1);
+    }
+
+    .newsletter__decor svg {
+      width: 6.25rem;
+      height: 6.25rem;
+    }
+
+    .newsletter__decor--right {
+      transform: scaleX(-1) scale(1.1);
+    }
+
+    .newsletter__form {
+      flex-direction: row;
+    }
+
+    .newsletter__form input {
+      flex: 1 1 auto;
+    }
+  }
+}

@@ -1,0 +1,118 @@
+@layer components {
+  .footer {
+    background: var(--color-espresso);
+    color: var(--color-white);
+    padding-block: 3.8125rem 4.0625rem;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-24);
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer__social {
+    grid-column: 1 / -1;
+  }
+
+  .logo--footer {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-white);
+    text-transform: lowercase;
+  }
+
+  .footer__column,
+  .footer__social {
+    min-width: 0;
+  }
+
+  .footer__column h3,
+  .footer__social h3 {
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--color-white);
+  }
+
+  .footer__column ul,
+  .footer__social ul {
+    display: grid;
+    gap: 0.875rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer__column a,
+  .footer__social a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-target);
+    color: var(--color-white-80);
+    font-family: var(--font-ui);
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  .footer__social ul {
+    grid-template-columns: repeat(2, var(--touch-target));
+    gap: var(--space-8);
+  }
+
+  .footer__social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--color-white-40);
+    border-radius: var(--radius-round);
+    background: var(--color-white-faint);
+    color: var(--color-white);
+    transition: transform var(--transition), background-color var(--transition);
+  }
+
+  .footer :focus-visible {
+    outline-color: var(--color-white);
+  }
+
+  @media (hover: hover) {
+    .footer__social a:hover {
+      transform: translateY(-2px);
+      background-color: var(--color-white-soft);
+    }
+  }
+
+  /* md ≥ 768px: arrange the footer into three responsive columns. */
+  @media (min-width: 48rem) {
+    .footer__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+    }
+
+    .footer__brand {
+      grid-column: auto;
+    }
+
+    .footer__social {
+      grid-column: auto;
+    }
+  }
+
+  /* lg/xl ≥ 1024px: display all six footer sections in one row. */
+  @media (min-width: 64rem) {
+    .footer__grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+}

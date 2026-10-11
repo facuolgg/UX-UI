@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Coffea favicon">
+  <rect width="64" height="64" rx="18" fill="#30261c"/>
+  <path d="M20 19h24c4.4 0 8 3.6 8 8v8c0 7.2-5.8 13-13 13h-2c-7.2 0-13-5.8-13-13v-8c0-4.4 3.6-8 8-8Zm2 5v8m12-8v8M18 33h28" fill="none" stroke="#f1f0ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M46 20c3 0 5 2 5 5v3c0 3-2 5-5 5h-2v-13h2Z" fill="#e2d9c8" opacity=".8"/>
+</svg>

@@ -1,0 +1,75 @@
+@layer layout {
+  .container {
+    width: min(
+      calc(100% - var(--container-gutter-base) - var(--container-gutter-base)),
+      var(--container)
+    );
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: clamp(2.5rem, 2.25rem + 1vw, 4rem);
+  }
+
+  .section-heading {
+    margin-bottom: clamp(1.5rem, 1.2rem + 1vw, 2.75rem);
+    text-align: left;
+  }
+
+  .section-heading--center {
+    text-align: center;
+  }
+
+  .section-heading__eyebrow {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-ui);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .section-heading__eyebrow--accent {
+    font-family: var(--font-accent);
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+
+  .section-heading h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 1.6rem + 1vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-espresso);
+  }
+
+  /* md ≥ 768px: increase side gutters to 32px. */
+  @media (min-width: 48rem) {
+    .container {
+      width: min(
+        calc(100% - var(--container-gutter-md) - var(--container-gutter-md)),
+        var(--container)
+      );
+    }
+  }
+
+  /* lg ≥ 1024px: increase side gutters to 48px. */
+  @media (min-width: 64rem) {
+    .container {
+      width: min(
+        calc(100% - var(--container-gutter-lg) - var(--container-gutter-lg)),
+        var(--container)
+      );
+    }
+  }
+
+  /* xl ≥ 1440px: use the original fixed-width centered canvas. */
+  @media (min-width: 90rem) {
+    .container {
+      width: min(100%, var(--container));
+    }
+  }
+}

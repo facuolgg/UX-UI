@@ -1,0 +1,30 @@
+@layer components {
+  .product-slider {
+    position: relative;
+  }
+
+  .carousel {
+    display: flex;
+    gap: var(--carousel-gap);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 0.625rem;
+  }
+
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carousel,
+    .slider-arrow,
+    .product-card,
+    .favorite-toggle__icon {
+      scroll-behavior: auto;
+      transition: none;
+    }
+  }
+}

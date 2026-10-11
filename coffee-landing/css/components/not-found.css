@@ -1,0 +1,19 @@
+@layer components {
+  .not-found {
+    display: grid;
+    align-items: center;
+    min-height: var(--not-found-min-height);
+  }
+
+  .not-found__content {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-24);
+    text-align: center;
+  }
+
+  .not-found__title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--fs-h2), var(--not-found-title-fluid), var(--fs-hero-lg));
+  }
+}

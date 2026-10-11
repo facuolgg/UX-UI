@@ -1,0 +1,122 @@
+@layer components {
+  .hero {
+    position: relative;
+    min-height: var(--hero-height-base);
+    padding-block: 0;
+    background: linear-gradient(90deg, var(--color-hero-overlay-90), var(--color-hero-overlay-86));
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    align-items: center;
+    min-height: var(--hero-height-base);
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 35rem;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 1.25rem;
+    font-family: var(--font-ui);
+    font-size: var(--fs-base);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-white);
+  }
+
+  .hero h1 {
+    margin-bottom: 1.5rem;
+    max-width: 12ch;
+    font-family: var(--font-display);
+    font-size: var(--fs-hero);
+    font-weight: 700;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+  }
+
+  .hero__text {
+    max-width: 28rem;
+    margin-bottom: var(--space-24);
+    font-size: clamp(1.125rem, 1rem + 0.45vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--color-white);
+  }
+
+  .hero :focus-visible {
+    outline-color: var(--color-white);
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .hero__media::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--color-hero-overlay-90), var(--color-hero-overlay-86));
+    content: "";
+    pointer-events: none;
+  }
+
+  .hero__media picture,
+  .hero__media img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__media img {
+    object-fit: cover;
+    object-position: 65% center;
+    filter: saturate(0.9) contrast(1.05);
+  }
+
+  .hero .button--primary {
+    min-height: var(--touch-target);
+    padding: var(--space-16) var(--space-40);
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-md);
+  }
+
+  /* md ≥ 768px: enlarge the heading while keeping the mobile-height hero. */
+  @media (min-width: 48rem) {
+    .hero h1 {
+      font-size: var(--fs-hero-md);
+    }
+  }
+
+  /* lg/xl ≥ 1024px: restore the 1000px hero and 72px heading. */
+  @media (min-width: 64rem) {
+    .hero {
+      min-height: var(--hero-height-lg);
+    }
+
+    .hero__inner {
+      min-height: var(--hero-height-lg);
+    }
+
+    .hero__content {
+      max-width: 35rem;
+    }
+
+    .hero__media {
+      width: min(var(--hero-media-width), var(--hero-media-max-width));
+      inset: 0 0 0 auto;
+      opacity: 1;
+    }
+
+    .hero h1 {
+      font-size: var(--fs-hero-lg);
+    }
+  }
+}
