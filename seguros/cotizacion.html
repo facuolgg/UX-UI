@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cotizar Seguro — Cubrí Seguros</title>
+  
+  <!-- Basecoat UI (estilos de componentes) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.1.0/dist/basecoat.cdn.min.css">
+  
+  <!-- Tailwind v4 en el navegador (utilidades) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <!-- Tokens de diseño y fuentes -->
+  <link rel="stylesheet" href="css/tokens.css">
+  
+  <!-- Lógica JavaScript en módulo -->
+  <script type="module" src="js/app.js"></script>
+</head>
+<body data-page="cotizacion" class="bg-[#F5F7FB] text-slate-900 min-h-screen flex flex-col font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- Header Global -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-slate-900">Cubrí<span class="text-indigo-600">.</span></span>
+          <span class="text-xs block font-medium text-slate-500 uppercase tracking-widest -mt-1">Seguros Digitales</span>
+        </div>
+      </a>
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Checkout Seguro
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stepper de navegación (Paso 1 activo) -->
+  <nav id="stepper-container" class="bg-white border-b border-slate-200" aria-label="Progreso de contratación">
+    <div class="max-w-4xl mx-auto px-4 py-4 sm:py-5">
+      <ol class="flex items-center justify-between w-full">
+        <!-- Paso 1: Activo -->
+        <li class="flex items-center gap-2 sm:gap-3" id="step-item-1">
+          <span id="step-badge-1" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold bg-indigo-600 text-white ring-4 ring-indigo-100 transition-all shadow">1</span>
+          <span id="step-label-1" class="text-xs md:text-sm font-bold text-indigo-700">Cotizar</span>
+        </li>
+        <li class="flex-1 mx-2 sm:mx-4" id="step-line-container-1">
+          <div id="step-line-1" class="h-0.5 bg-slate-200 transition-all"></div>
+        </li>
+
+        <!-- Paso 2: Pendiente -->
+        <li class="flex items-center gap-2 sm:gap-3" id="step-item-2">
+          <span id="step-badge-2" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold bg-white border-2 border-slate-300 text-slate-500">2</span>
+          <span id="step-label-2" class="text-xs md:text-sm font-medium text-slate-500 hidden sm:inline-block">Elegir plan</span>
+        </li>
+        <li class="flex-1 mx-2 sm:mx-4" id="step-line-container-2">
+          <div id="step-line-2" class="h-0.5 bg-slate-200 transition-all"></div>
+        </li>
+
+        <!-- Paso 3: Pendiente -->
+        <li class="flex items-center gap-2 sm:gap-3" id="step-item-3">
+          <span id="step-badge-3" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold bg-white border-2 border-slate-300 text-slate-500">3</span>
+          <span id="step-label-3" class="text-xs md:text-sm font-medium text-slate-500 hidden sm:inline-block">Datos personales</span>
+        </li>
+        <li class="flex-1 mx-2 sm:mx-4" id="step-line-container-3">
+          <div id="step-line-3" class="h-0.5 bg-slate-200 transition-all"></div>
+        </li>
+
+        <!-- Paso 4: Pendiente -->
+        <li class="flex items-center gap-2 sm:gap-3" id="step-item-4">
+          <span id="step-badge-4" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold bg-white border-2 border-slate-300 text-slate-500">4</span>
+          <span id="step-label-4" class="text-xs md:text-sm font-medium text-slate-500 hidden sm:inline-block">Pago</span>
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Contenedor Principal: 02. Cotizar (Paso 1) -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+    <div class="grid gap-8 lg:grid-cols-[1fr_380px]">
+      <!-- Formulario -->
+      <form class="card bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6" onsubmit="event.preventDefault();">
+        <div>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Datos de tu equipo</h2>
+          <p class="text-sm text-slate-500 mt-1">Ingresá los datos del celular que querés cotizar.</p>
+        </div>
+
+        <div class="space-y-5">
+          <!-- Marca -->
+          <div role="group" class="field flex flex-col gap-1.5" id="field-marca">
+            <label for="marca" class="text-sm font-semibold text-slate-800">Marca del equipo <span class="text-red-500">*</span></label>
+            <select id="marca" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+              <option value="">Elegí una marca...</option>
+              <option value="Samsung">Samsung</option>
+              <option value="Apple">Apple</option>
+              <option value="Motorola">Motorola</option>
+              <option value="Xiaomi">Xiaomi</option>
+              <option value="Google">Google</option>
+              <option value="Otra">Otra</option>
+            </select>
+            <p id="marca-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+          </div>
+
+          <!-- Modelo -->
+          <div role="group" class="field flex flex-col gap-1.5" id="field-modelo">
+            <label for="modelo" class="text-sm font-semibold text-slate-800">Modelo del equipo <span class="text-red-500">*</span></label>
+            <input id="modelo" type="text" placeholder="Ej.: Galaxy A55 o iPhone 14" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+            <p id="modelo-help" class="text-xs text-slate-500">Debe tener entre 2 y 40 caracteres.</p>
+            <p id="modelo-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+          </div>
+
+          <!-- Valor del equipo -->
+          <div role="group" class="field flex flex-col gap-1.5" id="field-valor">
+            <label for="valor" class="text-sm font-semibold text-slate-800">Valor del equipo ($) <span class="text-red-500">*</span></label>
+            <input id="valor" type="text" placeholder="Ej.: 600.000" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+            <p id="valor-help" class="text-xs text-slate-500">Monto estimado de mercado entre $100.000 y $2.500.000.</p>
+            <p id="valor-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+          </div>
+
+          <!-- Antigüedad -->
+          <div role="group" class="field flex flex-col gap-2" id="field-antiguedad">
+            <span class="text-sm font-semibold text-slate-800">Antigüedad del equipo <span class="text-red-500">*</span></span>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <label class="chip-option flex items-center justify-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-indigo-300 transition-all text-center text-sm font-medium text-slate-700">
+                <input type="radio" name="antiguedad" value="menos_1" class="sr-only">
+                <span>Menos de 1 año</span>
+              </label>
+              <label class="chip-option flex items-center justify-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-indigo-300 transition-all text-center text-sm font-medium text-slate-700">
+                <input type="radio" name="antiguedad" value="1_a_2" class="sr-only">
+                <span>1 a 2 años</span>
+              </label>
+              <label class="chip-option flex items-center justify-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-indigo-300 transition-all text-center text-sm font-medium text-slate-700">
+                <input type="radio" name="antiguedad" value="mas_2" class="sr-only">
+                <span>Más de 2 años</span>
+              </label>
+            </div>
+            <p id="antiguedad-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+          </div>
+        </div>
+
+        <!-- Botones de acción Paso 1 -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-slate-200">
+          <button type="button" class="btn w-full sm:w-auto px-6 py-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl" data-variant="outline" id="btn-volver-paso-1">
+            Volver
+          </button>
+          <div class="flex flex-col items-center sm:items-end w-full sm:w-auto">
+            <button type="button" class="btn w-full sm:w-auto px-8 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl shadow-sm transition-all" id="btn-continuar-paso-1" disabled>
+              Ver planes
+            </button>
+            <span id="hint-paso-1" class="text-xs text-slate-500 mt-1">Completá todos los campos para ver planes</span>
+          </div>
+        </div>
+      </form>
+
+      <!-- Aside informativo Paso 1 -->
+      <aside class="card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm h-fit space-y-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 text-sm">¿Cómo calculamos tu cuota?</h3>
+            <p class="text-xs text-slate-500">Transparencia garantizada</p>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-600 leading-relaxed">
+          La cuota mensual se determina en función del valor asegurado de tu equipo, la tasa anual del plan que elijas y el factor por antigüedad:
+        </p>
+
+        <ul class="space-y-2 text-xs text-slate-600">
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-600 font-bold">•</span>
+            <span><strong>Menos de 1 año:</strong> Factor 1,00 (sin recargo).</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-600 font-bold">•</span>
+            <span><strong>1 a 2 años:</strong> Factor 1,10 (10% de recargo).</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-indigo-600 font-bold">•</span>
+            <span><strong>Más de 2 años:</strong> Factor 1,25 (25% de recargo).</span>
+          </li>
+        </ul>
+
+        <div class="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+          <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          <span>Póliza respaldada por aseguradora oficial</span>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer Global -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>© 2026 Cubrí Seguros S.A. — Práctica de Contratación Digital de Seguros — Licenciatura en Sistemas de Información (FCyT).</p>
+    </div>
+  </footer>
+
+</body>
+</html>

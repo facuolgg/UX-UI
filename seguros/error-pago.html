@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error en el Pago — Cubrí Seguros</title>
+  
+  <!-- Basecoat UI (estilos de componentes) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.1.0/dist/basecoat.cdn.min.css">
+  
+  <!-- Tailwind v4 en el navegador (utilidades) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <!-- Tokens de diseño y fuentes -->
+  <link rel="stylesheet" href="css/tokens.css">
+  
+  <!-- Lógica JavaScript en módulo -->
+  <script type="module" src="js/app.js"></script>
+</head>
+<body data-page="error-pago" class="bg-[#F5F7FB] text-slate-900 min-h-screen flex flex-col font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- Header Global -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-slate-900">Cubrí<span class="text-indigo-600">.</span></span>
+          <span class="text-xs block font-medium text-slate-500 uppercase tracking-widest -mt-1">Seguros Digitales</span>
+        </div>
+      </a>
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          Error de Pago
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal: 07. Error de pago -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+    <div class="max-w-xl mx-auto space-y-6">
+      <div class="card bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm text-center space-y-6">
+        <!-- Ícono de Error -->
+        <div class="w-20 h-20 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto shadow-inner">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+
+        <div class="space-y-2">
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            No pudimos procesar tu pago
+          </h1>
+          <div class="alert bg-red-50 border border-red-200 rounded-xl p-4 text-left text-sm text-red-800" data-variant="destructive">
+            <p class="font-bold flex items-center gap-2">
+              <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+              </svg>
+              Motivo del rechazo:
+            </p>
+            <p id="error-mensaje" class="mt-1 text-xs sm:text-sm text-red-700 font-medium">Tarjeta rechazada. Verificá los datos ingresados o probá con otro medio de pago.</p>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500 pt-2 leading-relaxed">
+            No te preocupes: todos los datos de tu cotización y cobertura se encuentran guardados. Podés volver al paso anterior para verificar o cambiar tu tarjeta.
+          </p>
+        </div>
+
+        <!-- Botones de Acción Error -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <button type="button" class="btn px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-sm transition-all" id="btn-error-reintentar">
+            Reintentar pago
+          </button>
+          <button type="button" class="btn px-6 py-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl" data-variant="outline" id="btn-error-cambiar-medio">
+            Cambiar medio de pago
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Global -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>© 2026 Cubrí Seguros S.A. — Práctica de Contratación Digital de Seguros — Licenciatura en Sistemas de Información (FCyT).</p>
+    </div>
+  </footer>
+
+</body>
+</html>

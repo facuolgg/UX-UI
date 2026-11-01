@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Póliza Emitida con Éxito — Cubrí Seguros</title>
+  
+  <!-- Basecoat UI (estilos de componentes) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.1.0/dist/basecoat.cdn.min.css">
+  
+  <!-- Tailwind v4 en el navegador (utilidades) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <!-- Tokens de diseño y fuentes -->
+  <link rel="stylesheet" href="css/tokens.css">
+  
+  <!-- Lógica JavaScript en módulo -->
+  <script type="module" src="js/app.js"></script>
+</head>
+<body data-page="exito" class="bg-[#F5F7FB] text-slate-900 min-h-screen flex flex-col font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- Header Global -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-slate-900">Cubrí<span class="text-indigo-600">.</span></span>
+          <span class="text-xs block font-medium text-slate-500 uppercase tracking-widest -mt-1">Seguros Digitales</span>
+        </div>
+      </a>
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Póliza Emitida
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal: 06. Éxito -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+    <div class="max-w-2xl mx-auto space-y-6">
+      <div class="card bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm text-center space-y-6">
+        <!-- Ícono de Éxito -->
+        <div class="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+
+        <div class="space-y-2">
+          <span class="badge px-3 py-1 text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full">
+            ¡Pago aprobado y póliza emitida!
+          </span>
+          <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+            ¡Felicitaciones, tu celular ya está protegido!
+          </h1>
+          <p class="text-sm text-slate-600 max-w-md mx-auto">
+            Te enviamos el certificado de cobertura y las condiciones de la póliza a <strong id="exito-email" class="text-slate-900 font-semibold"></strong>.
+          </p>
+        </div>
+
+        <!-- Tarjeta Póliza -->
+        <div class="bg-indigo-50/70 border border-indigo-200 rounded-2xl p-6 text-left space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-indigo-100 pb-3">
+            <div>
+              <span class="text-xs uppercase tracking-wider font-semibold text-indigo-700 block">Número de póliza</span>
+              <span id="exito-poliza" class="font-mono text-xl sm:text-2xl font-extrabold text-indigo-900">POL-2026-000000</span>
+            </div>
+            <span class="badge px-3 py-1 text-xs font-semibold bg-emerald-600 text-white rounded-full">
+              Activa inmediatamente
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+            <div>
+              <span class="text-slate-500 block">Titular:</span>
+              <strong id="exito-titular" class="text-sm font-bold text-slate-900"></strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Equipo asegurado:</span>
+              <strong id="exito-equipo" class="text-sm font-bold text-slate-900"></strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Plan contratado:</span>
+              <strong id="exito-plan" class="text-sm font-bold text-indigo-700"></strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Cuota mensual:</span>
+              <strong id="exito-cuota" class="text-sm font-bold text-slate-900"></strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón Reiniciar -->
+        <div class="pt-4">
+          <button type="button" class="btn px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl shadow transition-all" id="btn-exito-inicio" data-variant="ghost">
+            Volver al inicio
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Global -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>© 2026 Cubrí Seguros S.A. — Práctica de Contratación Digital de Seguros — Licenciatura en Sistemas de Información (FCyT).</p>
+    </div>
+  </footer>
+
+</body>
+</html>
