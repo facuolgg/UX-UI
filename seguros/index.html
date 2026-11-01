@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cubrí Seguros — Contratación Digital de Seguros</title>
+  
+  <!-- Basecoat UI (estilos de componentes) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.1.0/dist/basecoat.cdn.min.css">
+  
+  <!-- Tailwind v4 en el navegador (utilidades) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <!-- Tokens de diseño y fuentes -->
+  <link rel="stylesheet" href="css/tokens.css">
+  
+  <!-- Lógica JavaScript en módulo -->
+  <script type="module" src="js/app.js"></script>
+</head>
+<body class="bg-[#F5F7FB] text-slate-900 min-h-screen flex flex-col font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- Header Global -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-slate-900">Cubrí<span class="text-indigo-600">.</span></span>
+          <span class="text-xs block font-medium text-slate-500 uppercase tracking-widest -mt-1">Seguros Digitales</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Checkout Seguro
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stepper de navegación (Paso 1 al 4) -->
+  <nav id="stepper-container" class="bg-white border-b border-slate-200 hidden transition-all" aria-label="Progreso de contratación">
+    <div class="max-w-4xl mx-auto px-4 py-4 sm:py-5">
+      <ol class="flex items-center justify-between w-full">
+        <!-- Paso 1 -->
+        <li class="flex items-center gap-2 sm:gap-3" id="step-item-1">
+          <span id="step-badge-1" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold bg-indigo-600 text-white shadow">1</span>
+          <span id="step-label-1" class="text-xs md:text-sm font-bold text-indigo-700">Cotizar</span>
+        </li>
+        <li class="flex-1 mx-2 sm:mx-4" id="step-line-container-1">
+          <div id="step-line-1" class="h-0.5 bg-slate-200 transition-all"></div>
+        </li>
+
+        <!-- Paso 2 -->
+        <li class="flex items-center gap-2 sm:gap-3" id="step-item-2">
+          <span id="step-badge-2" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold bg-white border-2 border-slate-300 text-slate-500">2</span>
+          <span id="step-label-2" class="text-xs md:text-sm font-medium text-slate-500 hidden sm:inline-block">Elegir plan</span>
+        </li>
+        <li class="flex-1 mx-2 sm:mx-4" id="step-line-container-2">
+          <div id="step-line-2" class="h-0.5 bg-slate-200 transition-all"></div>
+        </li>
+
+        <!-- Paso 3 -->
+        <li class="flex items-center gap-2 sm:gap-3" id="step-item-3">
+          <span id="step-badge-3" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold bg-white border-2 border-slate-300 text-slate-500">3</span>
+          <span id="step-label-3" class="text-xs md:text-sm font-medium text-slate-500 hidden sm:inline-block">Datos personales</span>
+        </li>
+        <li class="flex-1 mx-2 sm:mx-4" id="step-line-container-3">
+          <div id="step-line-3" class="h-0.5 bg-slate-200 transition-all"></div>
+        </li>
+
+        <!-- Paso 4 -->
+        <li class="flex items-center gap-2 sm:gap-3" id="step-item-4">
+          <span id="step-badge-4" class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold bg-white border-2 border-slate-300 text-slate-500">4</span>
+          <span id="step-label-4" class="text-xs md:text-sm font-medium text-slate-500 hidden sm:inline-block">Pago</span>
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Contenedor Principal de Vistas -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+
+    <!-- ========================================== -->
+    <!-- 01. INICIO / CATÁLOGO (Paso 0)              -->
+    <!-- ========================================== -->
+    <section data-paso="0" class="space-y-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
+        <!-- Hero Column -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+            ✨ Nueva contratación 100% digital
+          </span>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Asegurá lo que más querés en minutos.
+          </h1>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Sin papeleo, sin demoras y con la mejor cobertura del país. Elegí tu producto, personalizá tu plan y activá tu póliza al instante.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <div class="flex items-center gap-3 text-sm text-slate-700 font-medium">
+              <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span>Cotización transparente sin sorpresas</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm text-slate-700 font-medium">
+              <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span>Gestión ágil de siniestros y reposición</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm text-slate-700 font-medium">
+              <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span>Cancelás cuando quieras sin penalidad</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Grid 2x2 Column -->
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Producto 1: Celular (Habilitado) -->
+            <div class="card bg-white border-2 border-indigo-500 rounded-2xl p-6 shadow-md hover:shadow-lg transition-all relative flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <span class="badge px-2.5 py-0.5 text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full">
+                    Disponible
+                  </span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-900">Seguro de Celular</h3>
+                  <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                    Protección integral contra robo con violencia, rotura de pantalla y daños totales para tu smartphone.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-100">
+                <button type="button" class="btn w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-xl transition-all shadow-sm" id="btn-iniciar-celular">
+                  Cotizar celular
+                </button>
+              </div>
+            </div>
+
+            <!-- Producto 2: Hogar (Próximamente) -->
+            <div class="card bg-slate-50/70 border border-slate-200 rounded-2xl p-6 opacity-75 flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                  </div>
+                  <span class="badge px-2.5 py-0.5 text-xs font-semibold bg-slate-200 text-slate-600 rounded-full">
+                    Próximamente
+                  </span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-700">Seguro de Hogar</h3>
+                  <p class="text-sm text-slate-500 mt-1 leading-relaxed">
+                    Protegé tu vivienda y electrodomésticos contra incendios, robos y siniestros imprevistos.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-200">
+                <button type="button" class="btn w-full opacity-60 cursor-not-allowed bg-slate-200 text-slate-600 font-semibold py-2.5 rounded-xl" disabled>
+                  Próximamente
+                </button>
+              </div>
+            </div>
+
+            <!-- Producto 3: Bicicleta (Próximamente) -->
+            <div class="card bg-slate-50/70 border border-slate-200 rounded-2xl p-6 opacity-75 flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="5.5" cy="17.5" r="3.5" stroke-width="2"></circle>
+                      <circle cx="18.5" cy="17.5" r="3.5" stroke-width="2"></circle>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 6a1 1 0 100-2 1 1 0 000 2zm-3 11.5l3-8.5H9l-3 4"></path>
+                    </svg>
+                  </div>
+                  <span class="badge px-2.5 py-0.5 text-xs font-semibold bg-slate-200 text-slate-600 rounded-full">
+                    Próximamente
+                  </span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-700">Seguro de Bicicleta</h3>
+                  <p class="text-sm text-slate-500 mt-1 leading-relaxed">
+                    Pedaleá sin preocupaciones con cobertura contra robo en vía pública y responsabilidad civil.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-200">
+                <button type="button" class="btn w-full opacity-60 cursor-not-allowed bg-slate-200 text-slate-600 font-semibold py-2.5 rounded-xl" disabled>
+                  Próximamente
+                </button>
+              </div>
+            </div>
+
+            <!-- Producto 4: Viaje (Próximamente) -->
+            <div class="card bg-slate-50/70 border border-slate-200 rounded-2xl p-6 opacity-75 flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <span class="badge px-2.5 py-0.5 text-xs font-semibold bg-slate-200 text-slate-600 rounded-full">
+                    Próximamente
+                  </span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-slate-700">Seguro de Viaje</h3>
+                  <p class="text-sm text-slate-500 mt-1 leading-relaxed">
+                    Asistencia médica internacional, repatriación y cobertura por extravío o demora de equipaje.
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-200">
+                <button type="button" class="btn w-full opacity-60 cursor-not-allowed bg-slate-200 text-slate-600 font-semibold py-2.5 rounded-xl" disabled>
+                  Próximamente
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 02. COTIZAR (Paso 1)                       -->
+    <!-- ========================================== -->
+    <section data-paso="1" hidden class="space-y-6">
+      <div class="grid gap-8 lg:grid-cols-[1fr_380px]">
+        <!-- Formulario -->
+        <form class="card bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6" onsubmit="event.preventDefault();">
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Datos de tu equipo</h2>
+            <p class="text-sm text-slate-500 mt-1">Ingresá los datos del celular que querés cotizar.</p>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Marca -->
+            <div role="group" class="field flex flex-col gap-1.5" id="field-marca">
+              <label for="marca" class="text-sm font-semibold text-slate-800">Marca del equipo <span class="text-red-500">*</span></label>
+              <select id="marca" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <option value="">Elegí una marca...</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Apple">Apple</option>
+                <option value="Motorola">Motorola</option>
+                <option value="Xiaomi">Xiaomi</option>
+                <option value="Google">Google</option>
+                <option value="Otra">Otra</option>
+              </select>
+              <p id="marca-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+            </div>
+
+            <!-- Modelo -->
+            <div role="group" class="field flex flex-col gap-1.5" id="field-modelo">
+              <label for="modelo" class="text-sm font-semibold text-slate-800">Modelo del equipo <span class="text-red-500">*</span></label>
+              <input id="modelo" type="text" placeholder="Ej.: Galaxy A55 o iPhone 14" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+              <p id="modelo-help" class="text-xs text-slate-500">Debe tener entre 2 y 40 caracteres.</p>
+              <p id="modelo-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+            </div>
+
+            <!-- Valor del equipo -->
+            <div role="group" class="field flex flex-col gap-1.5" id="field-valor">
+              <label for="valor" class="text-sm font-semibold text-slate-800">Valor del equipo ($) <span class="text-red-500">*</span></label>
+              <input id="valor" type="text" placeholder="Ej.: 600.000" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+              <p id="valor-help" class="text-xs text-slate-500">Monto estimado de mercado entre $100.000 y $2.500.000.</p>
+              <p id="valor-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+            </div>
+
+            <!-- Antigüedad -->
+            <div role="group" class="field flex flex-col gap-2" id="field-antiguedad">
+              <span class="text-sm font-semibold text-slate-800">Antigüedad del equipo <span class="text-red-500">*</span></span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <label class="chip-option flex items-center justify-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-indigo-300 transition-all text-center text-sm font-medium text-slate-700">
+                  <input type="radio" name="antiguedad" value="menos_1" class="sr-only">
+                  <span>Menos de 1 año</span>
+                </label>
+                <label class="chip-option flex items-center justify-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-indigo-300 transition-all text-center text-sm font-medium text-slate-700">
+                  <input type="radio" name="antiguedad" value="1_a_2" class="sr-only">
+                  <span>1 a 2 años</span>
+                </label>
+                <label class="chip-option flex items-center justify-center p-3 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-indigo-300 transition-all text-center text-sm font-medium text-slate-700">
+                  <input type="radio" name="antiguedad" value="mas_2" class="sr-only">
+                  <span>Más de 2 años</span>
+                </label>
+              </div>
+              <p id="antiguedad-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+            </div>
+          </div>
+
+          <!-- Botones de acción Paso 1 -->
+          <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-slate-200">
+            <button type="button" class="btn w-full sm:w-auto px-6 py-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl" data-variant="outline" id="btn-volver-paso-1">
+              Volver
+            </button>
+            <div class="flex flex-col items-center sm:items-end w-full sm:w-auto">
+              <button type="button" class="btn w-full sm:w-auto px-8 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl shadow-sm transition-all" id="btn-continuar-paso-1" disabled>
+                Ver planes
+              </button>
+              <span id="hint-paso-1" class="text-xs text-slate-500 mt-1">Completá todos los campos para ver planes</span>
+            </div>
+          </div>
+        </form>
+
+        <!-- Aside informativo Paso 1 -->
+        <aside class="card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm h-fit space-y-5">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm">¿Cómo calculamos tu cuota?</h3>
+              <p class="text-xs text-slate-500">Transparencia garantizada</p>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-600 leading-relaxed">
+            La cuota mensual se determina en función del valor asegurado de tu equipo, la tasa anual del plan que elijas y el factor por antigüedad:
+          </p>
+
+          <ul class="space-y-2 text-xs text-slate-600">
+            <li class="flex items-start gap-2">
+              <span class="text-indigo-600 font-bold">•</span>
+              <span><strong>Menos de 1 año:</strong> Factor 1,00 (sin recargo).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-indigo-600 font-bold">•</span>
+              <span><strong>1 a 2 años:</strong> Factor 1,10 (10% de recargo).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-indigo-600 font-bold">•</span>
+              <span><strong>Más de 2 años:</strong> Factor 1,25 (25% de recargo).</span>
+            </li>
+          </ul>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+            <span>Póliza respaldada por aseguradora oficial</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 03. ELEGIR PLAN (Paso 2)                   -->
+    <!-- ========================================== -->
+    <section data-paso="2" hidden class="space-y-6">
+      <div class="grid gap-8 lg:grid-cols-[1fr_380px]">
+        <!-- Formulario Planes -->
+        <div class="card bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Elegí tu plan</h2>
+            <p class="text-sm text-slate-500 mt-1">Seleccioná el nivel de protección ideal para tu celular.</p>
+          </div>
+
+          <!-- Contenedor dinámico de los 3 planes -->
+          <div id="planes-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Renderizado por js/render.js -->
+          </div>
+
+          <!-- Botones de acción Paso 2 -->
+          <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-slate-200">
+            <button type="button" class="btn w-full sm:w-auto px-6 py-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl" data-variant="outline" id="btn-volver-paso-2">
+              Volver
+            </button>
+            <button type="button" class="btn w-full sm:w-auto px-8 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-sm transition-all" id="btn-continuar-paso-2">
+              Continuar
+            </button>
+          </div>
+        </div>
+
+        <!-- Resumen Lateral Desktop / Mobile -->
+        <aside class="card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm h-fit space-y-5">
+          <header class="border-b border-slate-100 pb-3">
+            <h3 class="font-extrabold text-slate-900 text-base">Resumen de contratación</h3>
+            <p class="text-xs text-slate-500">Detalle de tu seguro digital</p>
+          </header>
+
+          <section class="space-y-4 text-sm">
+            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+              <span class="text-slate-500 text-xs">Equipo</span>
+              <span class="font-semibold text-slate-800 text-xs text-right resumen-equipo-nombre">Galaxy A55</span>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+              <span class="text-slate-500 text-xs">Plan elegido</span>
+              <span class="font-semibold text-indigo-600 text-xs resumen-plan-nombre">Plus</span>
+            </div>
+            <div>
+              <span class="text-slate-500 text-xs block mb-2 font-medium">Coberturas incluidas:</span>
+              <ul class="space-y-1.5 resumen-coberturas-lista">
+                <!-- Se llena con renderResumen() -->
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-slate-200 flex justify-between items-baseline">
+              <span class="font-bold text-slate-900 text-sm">Cuota mensual</span>
+              <span class="text-2xl font-extrabold text-indigo-600 resumen-total-cuota">$ 3.000</span>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 04. DATOS PERSONALES (Paso 3)              -->
+    <!-- ========================================== -->
+    <section data-paso="3" hidden class="space-y-6">
+      <div class="grid gap-8 lg:grid-cols-[1fr_380px]">
+        <!-- Formulario Datos Personales -->
+        <form class="card bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6" onsubmit="event.preventDefault();">
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Datos del titular</h2>
+            <p class="text-sm text-slate-500 mt-1">Cargá tus datos personales para emitir la póliza.</p>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Nombre y Apellido (2 cols en desktop) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div role="group" class="field flex flex-col gap-1.5" id="field-nombre">
+                <label for="nombre" class="text-sm font-semibold text-slate-800">Nombre <span class="text-red-500">*</span></label>
+                <input id="nombre" type="text" placeholder="Ej.: Juan" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <p id="nombre-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+              </div>
+              <div role="group" class="field flex flex-col gap-1.5" id="field-apellido">
+                <label for="apellido" class="text-sm font-semibold text-slate-800">Apellido <span class="text-red-500">*</span></label>
+                <input id="apellido" type="text" placeholder="Ej.: Pérez" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <p id="apellido-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+              </div>
+            </div>
+
+            <!-- DNI y Fecha Nacimiento -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div role="group" class="field flex flex-col gap-1.5" id="field-dni">
+                <label for="dni" class="text-sm font-semibold text-slate-800">DNI <span class="text-red-500">*</span></label>
+                <input id="dni" type="text" maxlength="8" placeholder="Ej.: 38123456" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <p id="dni-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+              </div>
+              <div role="group" class="field flex flex-col gap-1.5" id="field-nacimiento">
+                <label for="nacimiento" class="text-sm font-semibold text-slate-800">Fecha de nacimiento <span class="text-red-500">*</span></label>
+                <input id="nacimiento" type="date" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <p id="nacimiento-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+              </div>
+            </div>
+
+            <!-- Email y Celular -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div role="group" class="field flex flex-col gap-1.5" id="field-email">
+                <label for="email" class="text-sm font-semibold text-slate-800">Email <span class="text-red-500">*</span></label>
+                <input id="email" type="email" placeholder="juan.perez@ejemplo.com" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <p id="email-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+              </div>
+              <div role="group" class="field flex flex-col gap-1.5" id="field-celular">
+                <label for="celular" class="text-sm font-semibold text-slate-800">Celular <span class="text-red-500">*</span></label>
+                <input id="celular" type="tel" placeholder="11 5555-1234" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <p id="celular-help" class="text-xs text-slate-500">10 dígitos sin 0 ni 15.</p>
+                <p id="celular-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+              </div>
+            </div>
+
+            <!-- Términos y condiciones -->
+            <div class="pt-2">
+              <div role="group" class="field flex items-start gap-3" id="field-terminos">
+                <input id="terminos" type="checkbox" class="mt-1 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-slate-300 rounded cursor-pointer">
+                <label for="terminos" class="text-sm text-slate-700 cursor-pointer select-none">
+                  Acepto los <a href="#" class="text-indigo-600 hover:underline font-semibold" onclick="event.preventDefault();">términos y condiciones</a> del servicio y la emisión de la póliza digital de seguro. <span class="text-red-500">*</span>
+                </label>
+              </div>
+              <p id="terminos-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-1 pl-7"></p>
+            </div>
+          </div>
+
+          <!-- Botones de acción Paso 3 -->
+          <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-slate-200">
+            <button type="button" class="btn w-full sm:w-auto px-6 py-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl" data-variant="outline" id="btn-volver-paso-3">
+              Volver
+            </button>
+            <div class="flex flex-col items-center sm:items-end w-full sm:w-auto">
+              <button type="button" class="btn w-full sm:w-auto px-8 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl shadow-sm transition-all" id="btn-continuar-paso-3" disabled>
+                Continuar al pago
+              </button>
+              <span id="hint-paso-3" class="text-xs text-slate-500 mt-1">Completá todos los campos para continuar</span>
+            </div>
+          </div>
+        </form>
+
+        <!-- Resumen Lateral Desktop / Mobile -->
+        <aside class="card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm h-fit space-y-5">
+          <header class="border-b border-slate-100 pb-3">
+            <h3 class="font-extrabold text-slate-900 text-base">Resumen de contratación</h3>
+            <p class="text-xs text-slate-500">Detalle de tu seguro digital</p>
+          </header>
+
+          <section class="space-y-4 text-sm">
+            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+              <span class="text-slate-500 text-xs">Equipo</span>
+              <span class="font-semibold text-slate-800 text-xs text-right resumen-equipo-nombre">Galaxy A55</span>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+              <span class="text-slate-500 text-xs">Plan elegido</span>
+              <span class="font-semibold text-indigo-600 text-xs resumen-plan-nombre">Plus</span>
+            </div>
+            <div>
+              <span class="text-slate-500 text-xs block mb-2 font-medium">Coberturas incluidas:</span>
+              <ul class="space-y-1.5 resumen-coberturas-lista">
+                <!-- Se llena con renderResumen() -->
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-slate-200 flex justify-between items-baseline">
+              <span class="font-bold text-slate-900 text-sm">Cuota mensual</span>
+              <span class="text-2xl font-extrabold text-indigo-600 resumen-total-cuota">$ 3.000</span>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 05. PAGO (Paso 4)                          -->
+    <!-- ========================================== -->
+    <section data-paso="4" hidden class="space-y-6">
+      <div class="grid gap-8 lg:grid-cols-[1fr_380px]">
+        <!-- Formulario Pago -->
+        <form class="card bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6" onsubmit="event.preventDefault();">
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Datos del pago</h2>
+            <p class="text-sm text-slate-500 mt-1">Ingresá los datos de tu tarjeta para activar la póliza.</p>
+          </div>
+
+          <!-- Banner Informativo de Simulación -->
+          <div class="alert bg-indigo-50 border border-indigo-200 rounded-xl p-4 flex gap-3 text-xs text-indigo-900">
+            <svg class="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div>
+              <p class="font-bold">Tarjetas de prueba (simulación):</p>
+              <p class="mt-0.5"><strong class="font-mono bg-white px-1 py-0.5 rounded border border-indigo-200">4111 1111 1111 1111</strong> → Simula pago aprobado.</p>
+              <p class="mt-0.5"><strong class="font-mono bg-white px-1 py-0.5 rounded border border-indigo-200">4000 0000 0000 0002</strong> → Simula rechazo por fondos/banco.</p>
+            </div>
+          </div>
+
+          <!-- Medio de Pago (Radio / Selector) -->
+          <div class="space-y-2">
+            <span class="text-sm font-semibold text-slate-800">Tipo de tarjeta</span>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="flex items-center justify-center gap-2 p-3 border-2 border-indigo-600 bg-indigo-50/50 rounded-xl cursor-pointer text-sm font-semibold text-indigo-700">
+                <input type="radio" name="metodo_pago" value="credito" checked class="text-indigo-600">
+                <span>Crédito</span>
+              </label>
+              <label class="flex items-center justify-center gap-2 p-3 border-2 border-slate-200 rounded-xl cursor-pointer text-sm font-medium text-slate-700 hover:border-slate-300">
+                <input type="radio" name="metodo_pago" value="debito" class="text-indigo-600">
+                <span>Débito</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Número de Tarjeta -->
+            <div role="group" class="field flex flex-col gap-1.5" id="field-tarjeta">
+              <label for="tarjeta" class="text-sm font-semibold text-slate-800">Número de tarjeta <span class="text-red-500">*</span></label>
+              <div class="relative">
+                <input id="tarjeta" type="text" maxlength="19" placeholder="4111 1111 1111 1111" class="w-full pl-3.5 pr-10 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="2" y="5" width="20" height="14" rx="2" stroke-width="2"></rect>
+                    <line x1="2" y1="10" x2="22" y2="10" stroke-width="2"></line>
+                  </svg>
+                </div>
+              </div>
+              <p id="tarjeta-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+            </div>
+
+            <!-- Vencimiento y CVV (2 cols) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div role="group" class="field flex flex-col gap-1.5" id="field-vencimiento">
+                <label for="vencimiento" class="text-sm font-semibold text-slate-800">Vencimiento (MM/AA) <span class="text-red-500">*</span></label>
+                <input id="vencimiento" type="text" maxlength="5" placeholder="MM/AA" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <p id="vencimiento-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+              </div>
+              <div role="group" class="field flex flex-col gap-1.5" id="field-cvv">
+                <label for="cvv" class="text-sm font-semibold text-slate-800">Código de seguridad (CVV) <span class="text-red-500">*</span></label>
+                <input id="cvv" type="password" maxlength="3" placeholder="123" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                <p id="cvv-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+              </div>
+            </div>
+
+            <!-- Titular de la tarjeta -->
+            <div role="group" class="field flex flex-col gap-1.5" id="field-titular_tarjeta">
+              <label for="titular_tarjeta" class="text-sm font-semibold text-slate-800">Nombre del titular de la tarjeta <span class="text-red-500">*</span></label>
+              <input id="titular_tarjeta" type="text" placeholder="Como figura impreso en el plástico" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 text-sm uppercase focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+              <p id="titular_tarjeta-error" role="alert" class="text-xs text-red-600 font-medium hidden mt-0.5"></p>
+            </div>
+          </div>
+
+          <!-- Botones de acción Paso 4 -->
+          <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-slate-200">
+            <button type="button" class="btn w-full sm:w-auto px-6 py-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl" data-variant="outline" id="btn-volver-paso-4">
+              Volver
+            </button>
+            <button type="button" class="btn w-full sm:w-auto px-8 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-semibold rounded-xl shadow-sm transition-all" id="btn-pagar">
+              Pagar y contratar
+            </button>
+          </div>
+        </form>
+
+        <!-- Resumen Final Lateral Desktop / Mobile -->
+        <aside class="card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm h-fit space-y-5">
+          <header class="border-b border-slate-100 pb-3">
+            <h3 class="font-extrabold text-slate-900 text-base">Resumen de contratación</h3>
+            <p class="text-xs text-slate-500">Detalle antes de confirmar</p>
+          </header>
+
+          <section class="space-y-4 text-sm">
+            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+              <span class="text-slate-500 text-xs">Seguro</span>
+              <span class="font-semibold text-slate-800 text-xs text-right">Seguro de Celular</span>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+              <span class="text-slate-500 text-xs">Equipo</span>
+              <span class="font-semibold text-slate-800 text-xs text-right resumen-equipo-nombre">Galaxy A55</span>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+              <span class="text-slate-500 text-xs">Plan</span>
+              <span class="font-semibold text-indigo-600 text-xs resumen-plan-nombre">Plus</span>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+              <span class="text-slate-500 text-xs">Titular</span>
+              <span class="font-semibold text-slate-800 text-xs text-right resumen-titular-nombre">Juan Pérez</span>
+            </div>
+            <div>
+              <span class="text-slate-500 text-xs block mb-2 font-medium">Coberturas incluidas:</span>
+              <ul class="space-y-1.5 resumen-coberturas-lista">
+                <!-- Se llena con renderResumen() -->
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-slate-200 flex justify-between items-baseline">
+              <span class="font-bold text-slate-900 text-sm">Total mensual</span>
+              <span class="text-2xl font-extrabold text-indigo-600 resumen-total-cuota">$ 3.000</span>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 06. ÉXITO (Paso 5)                         -->
+    <!-- ========================================== -->
+    <section data-paso="5" hidden class="max-w-2xl mx-auto space-y-6">
+      <div class="card bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm text-center space-y-6">
+        <!-- Ícono de Éxito -->
+        <div class="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+
+        <div class="space-y-2">
+          <span class="badge px-3 py-1 text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full">
+            ¡Pago aprobado y póliza emitida!
+          </span>
+          <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+            ¡Felicitaciones, tu celular ya está protegido!
+          </h2>
+          <p class="text-sm text-slate-600 max-w-md mx-auto">
+            Te enviamos el certificado de cobertura y las condiciones de la póliza a <strong id="exito-email" class="text-slate-900 font-semibold"></strong>.
+          </p>
+        </div>
+
+        <!-- Tarjeta Póliza -->
+        <div class="bg-indigo-50/70 border border-indigo-200 rounded-2xl p-6 text-left space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-indigo-100 pb-3">
+            <div>
+              <span class="text-xs uppercase tracking-wider font-semibold text-indigo-700 block">Número de póliza</span>
+              <span id="exito-poliza" class="font-mono text-xl sm:text-2xl font-extrabold text-indigo-900">POL-2026-000000</span>
+            </div>
+            <span class="badge px-3 py-1 text-xs font-semibold bg-emerald-600 text-white rounded-full">
+              Activa inmediatamente
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+            <div>
+              <span class="text-slate-500 block">Titular:</span>
+              <strong id="exito-titular" class="text-sm font-bold text-slate-900"></strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Equipo asegurado:</span>
+              <strong id="exito-equipo" class="text-sm font-bold text-slate-900"></strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Plan contratado:</span>
+              <strong id="exito-plan" class="text-sm font-bold text-indigo-700"></strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block">Cuota mensual:</span>
+              <strong id="exito-cuota" class="text-sm font-bold text-slate-900"></strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón Reiniciar -->
+        <div class="pt-4">
+          <button type="button" class="btn px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl shadow transition-all" id="btn-exito-inicio" data-variant="ghost">
+            Volver al inicio
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 07. ERROR DE PAGO (Paso 6)                 -->
+    <!-- ========================================== -->
+    <section data-paso="6" hidden class="max-w-xl mx-auto space-y-6">
+      <div class="card bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm text-center space-y-6">
+        <!-- Ícono de Error -->
+        <div class="w-20 h-20 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto shadow-inner">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+
+        <div class="space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            No pudimos procesar tu pago
+          </h2>
+          <div class="alert bg-red-50 border border-red-200 rounded-xl p-4 text-left text-sm text-red-800" data-variant="destructive">
+            <p class="font-bold flex items-center gap-2">
+              <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+              </svg>
+              Motivo del rechazo:
+            </p>
+            <p id="error-mensaje" class="mt-1 text-xs sm:text-sm text-red-700 font-medium">Tarjeta rechazada. Fondos insuficientes o límite excedido.</p>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500 pt-2">
+            No te preocupes: todos los datos de tu cotización y cobertura se encuentran guardados. Podés volver al paso anterior para verificar o cambiar tu tarjeta.
+          </p>
+        </div>
+
+        <!-- Botones de Acción Error -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <button type="button" class="btn px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-sm transition-all" id="btn-error-reintentar">
+            Reintentar pago
+          </button>
+          <button type="button" class="btn px-6 py-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl" data-variant="outline" id="btn-error-cambiar-medio">
+            Cambiar medio de pago
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Simple -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>© 2026 Cubrí Seguros S.A. — Práctica de Contratación Digital de Seguros — Licenciatura en Sistemas de Información (FCyT).</p>
+    </div>
+  </footer>
+
+</body>
+</html>
