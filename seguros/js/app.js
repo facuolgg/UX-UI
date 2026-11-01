@@ -1,4 +1,10 @@
-import { solicitud, irAPaso, reiniciarSolicitud } from './estado.js';
+import {
+  solicitud,
+  cargarEstado,
+  guardarEstado,
+  navegarA,
+  reiniciarSolicitud
+} from './estado.js';
 import { render, setPlanes, actualizarEstadoBotones } from './render.js';
 import {
   validarMarca,
@@ -15,8 +21,7 @@ import {
   validarTarjeta,
   validarVencimiento,
   validarCVV,
-  validarTitular,
-  limpiarNumero
+  validarTitular
 } from './validaciones.js';
 import { formatearMoneda } from './cotizador.js';
 import { simularPago, generarPoliza } from './pago.js';
@@ -77,16 +82,17 @@ async function cargarPlanes() {
   }
 }
 
-function inicializarEventosPaso0() {
+function inicializarCatalogo() {
   const btnCelular = document.getElementById('btn-iniciar-celular');
   if (btnCelular) {
     btnCelular.addEventListener('click', () => {
-      irAPaso(1);
+      solicitud.paso = 1;
+      navegarA('cotizacion.html');
     });
   }
 }
 
-function inicializarEventosPaso1() {
+function inicializarCotizacion() {
   const marcaEl = document.getElementById('marca');
   const modeloEl = document.getElementById('modelo');
   const valorEl = document.getElementById('valor');
@@ -97,6 +103,7 @@ function inicializarEventosPaso1() {
   if (marcaEl) {
     marcaEl.addEventListener('change', () => {
       solicitud.equipo.marca = marcaEl.value;
+      guardarEstado();
       mostrarErrorCampo('marca', validarMarca(marcaEl.value));
       actualizarEstadoBotones();
     });
@@ -109,6 +116,7 @@ function inicializarEventosPaso1() {
   if (modeloEl) {
     modeloEl.addEventListener('input', () => {
       solicitud.equipo.modelo = modeloEl.value;
+      guardarEstado();
       actualizarEstadoBotones();
     });
     modeloEl.addEventListener('blur', () => {
@@ -122,6 +130,7 @@ function inicializarEventosPaso1() {
       const raw = e.target.value.replace(/\D/g, '');
       const num = raw ? Number(raw) : 0;
       solicitud.equipo.valor = num;
+      guardarEstado();
       actualizarEstadoBotones();
     });
 
@@ -145,6 +154,7 @@ function inicializarEventosPaso1() {
     radio.addEventListener('change', () => {
       if (radio.checked) {
         solicitud.equipo.antiguedad = radio.value;
+        guardarEstado();
         const errorEl = document.getElementById('antiguedad-error');
         if (errorEl) {
           errorEl.textContent = '';
@@ -157,13 +167,13 @@ function inicializarEventosPaso1() {
 
   if (btnVolver) {
     btnVolver.addEventListener('click', () => {
-      irAPaso(0);
+      solicitud.paso = 0;
+      navegarA('index.html');
     });
   }
 
   if (btnContinuar) {
     btnContinuar.addEventListener('click', () => {
-      // Revalidación completa al intentar avanzar
       const errMarca = validarMarca(solicitud.equipo.marca);
       const errModelo = validarModelo(solicitud.equipo.modelo);
       const errValor = validarValorEquipo(solicitud.equipo.valor);
@@ -180,15 +190,15 @@ function inicializarEventosPaso1() {
       }
 
       if (errMarca) {
-        marcaEl.focus();
+        marcaEl?.focus();
         return;
       }
       if (errModelo) {
-        modeloEl.focus();
+        modeloEl?.focus();
         return;
       }
       if (errValor) {
-        valorEl.focus();
+        valorEl?.focus();
         return;
       }
       if (errAnt) {
@@ -196,12 +206,13 @@ function inicializarEventosPaso1() {
         return;
       }
 
-      irAPaso(2);
+      solicitud.paso = 2;
+      navegarA('planes.html');
     });
   }
 }
 
-function inicializarEventosPaso2() {
+function inicializarPlanes() {
   const containerPlanes = document.getElementById('planes-cards-container');
   const btnVolver = document.getElementById('btn-volver-paso-2');
   const btnContinuar = document.getElementById('btn-continuar-paso-2');
@@ -210,6 +221,7 @@ function inicializarEventosPaso2() {
     containerPlanes.addEventListener('change', (e) => {
       if (e.target.name === 'plan') {
         solicitud.plan = e.target.value;
+        guardarEstado();
         render();
       }
     });
@@ -217,18 +229,20 @@ function inicializarEventosPaso2() {
 
   if (btnVolver) {
     btnVolver.addEventListener('click', () => {
-      irAPaso(1);
+      solicitud.paso = 1;
+      navegarA('cotizacion.html');
     });
   }
 
   if (btnContinuar) {
     btnContinuar.addEventListener('click', () => {
-      irAPaso(3);
+      solicitud.paso = 3;
+      navegarA('datos.html');
     });
   }
 }
 
-function inicializarEventosPaso3() {
+function inicializarDatos() {
   const campos = [
     { id: 'nombre', validador: validarNombre, campoEstado: 'nombre' },
     { id: 'apellido', validador: validarApellido, campoEstado: 'apellido' },
@@ -244,6 +258,7 @@ function inicializarEventosPaso3() {
 
     el.addEventListener(evento || 'input', () => {
       solicitud.titular[campoEstado] = el.value.trim();
+      guardarEstado();
       actualizarEstadoBotones();
     });
 
@@ -257,6 +272,7 @@ function inicializarEventosPaso3() {
   if (terminosEl) {
     terminosEl.addEventListener('change', () => {
       solicitud.titular.terminos = terminosEl.checked;
+      guardarEstado();
       const errorTerm = validarTerminos(terminosEl.checked);
       const errorEl = document.getElementById('terminos-error');
       if (errorEl) {
@@ -277,13 +293,13 @@ function inicializarEventosPaso3() {
 
   if (btnVolver) {
     btnVolver.addEventListener('click', () => {
-      irAPaso(2);
+      solicitud.paso = 2;
+      navegarA('planes.html');
     });
   }
 
   if (btnContinuar) {
     btnContinuar.addEventListener('click', () => {
-      // Revalidación completa al intentar avanzar con foco en primer error
       let primerInvalido = null;
 
       for (const { id, validador, campoEstado } of campos) {
@@ -307,12 +323,13 @@ function inicializarEventosPaso3() {
         return;
       }
 
-      irAPaso(4);
+      solicitud.paso = 4;
+      navegarA('pago.html');
     });
   }
 }
 
-function inicializarEventosPaso4() {
+function inicializarPago() {
   const tarjetaEl = document.getElementById('tarjeta');
   const vencimientoEl = document.getElementById('vencimiento');
   const cvvEl = document.getElementById('cvv');
@@ -323,18 +340,21 @@ function inicializarEventosPaso4() {
 
   radiosMetodo.forEach((r) => {
     r.addEventListener('change', () => {
-      if (r.checked) solicitud.pago.metodo = r.value;
+      if (r.checked) {
+        solicitud.pago.metodo = r.value;
+        guardarEstado();
+      }
     });
   });
 
   if (tarjetaEl) {
     tarjetaEl.addEventListener('input', (e) => {
-      // Máscara: grupos de 4 dígitos
       const digitos = e.target.value.replace(/\D/g, '').slice(0, 16);
       const partes = digitos.match(/.{1,4}/g);
       const formateado = partes ? partes.join(' ') : digitos;
       e.target.value = formateado;
       solicitud.pago.tarjeta = formateado;
+      guardarEstado();
     });
 
     tarjetaEl.addEventListener('blur', () => {
@@ -344,13 +364,13 @@ function inicializarEventosPaso4() {
 
   if (vencimientoEl) {
     vencimientoEl.addEventListener('input', (e) => {
-      // Máscara: MM/AA automática
       let digitos = e.target.value.replace(/\D/g, '').slice(0, 4);
       if (digitos.length >= 3) {
         digitos = digitos.slice(0, 2) + '/' + digitos.slice(2);
       }
       e.target.value = digitos;
       solicitud.pago.vencimiento = digitos;
+      guardarEstado();
     });
 
     vencimientoEl.addEventListener('blur', () => {
@@ -363,6 +383,7 @@ function inicializarEventosPaso4() {
       const digitos = e.target.value.replace(/\D/g, '').slice(0, 3);
       e.target.value = digitos;
       solicitud.pago.cvv = digitos;
+      guardarEstado();
     });
 
     cvvEl.addEventListener('blur', () => {
@@ -373,6 +394,7 @@ function inicializarEventosPaso4() {
   if (titularEl) {
     titularEl.addEventListener('input', (e) => {
       solicitud.pago.titular = e.target.value;
+      guardarEstado();
     });
 
     titularEl.addEventListener('blur', () => {
@@ -382,7 +404,8 @@ function inicializarEventosPaso4() {
 
   if (btnVolver) {
     btnVolver.addEventListener('click', () => {
-      irAPaso(3);
+      solicitud.paso = 3;
+      navegarA('datos.html');
     });
   }
 
@@ -390,7 +413,6 @@ function inicializarEventosPaso4() {
     btnPagar.addEventListener('click', async (e) => {
       e.preventDefault();
 
-      // Validar datos de pago
       const errTarjeta = validarTarjeta(solicitud.pago.tarjeta);
       const errVenc = validarVencimiento(solicitud.pago.vencimiento);
       const errCvv = validarCVV(solicitud.pago.cvv);
@@ -402,23 +424,22 @@ function inicializarEventosPaso4() {
       mostrarErrorCampo('titular_tarjeta', errTitular);
 
       if (errTarjeta) {
-        tarjetaEl.focus();
+        tarjetaEl?.focus();
         return;
       }
       if (errVenc) {
-        vencimientoEl.focus();
+        vencimientoEl?.focus();
         return;
       }
       if (errCvv) {
-        cvvEl.focus();
+        cvvEl?.focus();
         return;
       }
       if (errTitular) {
-        titularEl.focus();
+        titularEl?.focus();
         return;
       }
 
-      // Estado de carga según especificación: botón "Procesando..." deshabilitado por 1.5s
       btnPagar.disabled = true;
       const textoOriginal = btnPagar.innerHTML;
       btnPagar.innerHTML = `
@@ -435,17 +456,22 @@ function inicializarEventosPaso4() {
         const resultado = await simularPago(solicitud.pago.tarjeta);
         if (resultado.ok) {
           solicitud.poliza = generarPoliza();
-          irAPaso(5);
+          solicitud.errorPago = null;
+          solicitud.paso = 5;
+          guardarEstado();
+          navegarA('exito.html');
         } else {
-          const errorMsgEl = document.getElementById('error-mensaje');
-          if (errorMsgEl) {
-            errorMsgEl.textContent = `${resultado.motivo || 'Tarjeta rechazada'}. Verificá los datos ingresados o probá con otra tarjeta.`;
-          }
-          irAPaso(6);
+          solicitud.errorPago = resultado.motivo || 'Tarjeta rechazada';
+          solicitud.paso = 6;
+          guardarEstado();
+          navegarA('error-pago.html');
         }
       } catch (err) {
         console.error('Error al simular pago:', err);
-        irAPaso(6);
+        solicitud.errorPago = 'Error de conexión en la pasarela de pagos';
+        solicitud.paso = 6;
+        guardarEstado();
+        navegarA('error-pago.html');
       } finally {
         btnPagar.disabled = false;
         btnPagar.innerHTML = textoOriginal;
@@ -454,7 +480,7 @@ function inicializarEventosPaso4() {
   }
 }
 
-function inicializarEventosPaso5() {
+function inicializarExito() {
   const btnInicio = document.getElementById('btn-exito-inicio');
   if (btnInicio) {
     btnInicio.addEventListener('click', () => {
@@ -463,40 +489,105 @@ function inicializarEventosPaso5() {
   }
 }
 
-function inicializarEventosPaso6() {
+function inicializarErrorPago() {
   const btnReintentar = document.getElementById('btn-error-reintentar');
   const btnCambiarMedio = document.getElementById('btn-error-cambiar-medio');
 
   if (btnReintentar) {
     btnReintentar.addEventListener('click', () => {
-      irAPaso(4);
+      solicitud.paso = 4;
+      navegarA('pago.html');
     });
   }
 
   if (btnCambiarMedio) {
     btnCambiarMedio.addEventListener('click', () => {
-      irAPaso(4);
-      setTimeout(() => {
-        const tarjetaEl = document.getElementById('tarjeta');
-        if (tarjetaEl) {
-          tarjetaEl.focus();
-          tarjetaEl.select();
-        }
-      }, 100);
+      solicitud.paso = 4;
+      navegarA('pago.html');
     });
   }
 }
 
+function verificarGuardasDeRuta(pagina) {
+  // Verificación de integridad de flujo ante recargas directas
+  if (pagina === 'planes') {
+    if (!solicitud.equipo.marca || !solicitud.equipo.modelo || !solicitud.equipo.valor || !solicitud.equipo.antiguedad) {
+      window.location.replace('cotizacion.html');
+      return false;
+    }
+  }
+
+  if (pagina === 'datos') {
+    if (!solicitud.equipo.valor) {
+      window.location.replace('cotizacion.html');
+      return false;
+    }
+  }
+
+  if (pagina === 'pago') {
+    if (!solicitud.equipo.valor) {
+      window.location.replace('cotizacion.html');
+      return false;
+    }
+    if (!solicitud.titular.dni || !solicitud.titular.email) {
+      window.location.replace('datos.html');
+      return false;
+    }
+  }
+
+  if (pagina === 'exito') {
+    if (!solicitud.poliza) {
+      window.location.replace('index.html');
+      return false;
+    }
+  }
+
+  if (pagina === 'error-pago') {
+    if (!solicitud.equipo.valor) {
+      window.location.replace('index.html');
+      return false;
+    }
+  }
+
+  return true;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
+  cargarEstado();
   await cargarPlanes();
 
-  inicializarEventosPaso0();
-  inicializarEventosPaso1();
-  inicializarEventosPaso2();
-  inicializarEventosPaso3();
-  inicializarEventosPaso4();
-  inicializarEventosPaso5();
-  inicializarEventosPaso6();
+  const paginaActual = document.body?.dataset?.page || 'catalogo';
+
+  // Si la guarda de ruta redirige, no inicializamos eventos innecesarios
+  if (!verificarGuardasDeRuta(paginaActual)) {
+    return;
+  }
+
+  switch (paginaActual) {
+    case 'catalogo':
+      inicializarCatalogo();
+      break;
+    case 'cotizacion':
+      inicializarCotizacion();
+      break;
+    case 'planes':
+      inicializarPlanes();
+      break;
+    case 'datos':
+      inicializarDatos();
+      break;
+    case 'pago':
+      inicializarPago();
+      break;
+    case 'exito':
+      inicializarExito();
+      break;
+    case 'error-pago':
+      inicializarErrorPago();
+      break;
+    default:
+      console.warn('Página no reconocida:', paginaActual);
+  }
 
   render();
 });

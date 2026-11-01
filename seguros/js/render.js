@@ -25,32 +25,26 @@ export function getPlanes() {
 }
 
 export function render() {
-  // 1. Mostrar u ocultar secciones según solicitud.paso
-  document.querySelectorAll('[data-paso]').forEach((s) => {
-    s.hidden = Number(s.dataset.paso) !== solicitud.paso;
-  });
-
-  // 2. Renderizar componentes compartidos
   renderStepper();
   renderPlanes();
   renderResumen();
   sincronizarCampos();
   actualizarEstadoBotones();
-
-  // Scroll to top on step change
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 export function renderStepper() {
   const stepperContainer = document.getElementById('stepper-container');
   if (!stepperContainer) return;
 
-  const pasoActual = solicitud.paso;
-  if (pasoActual < 1 || pasoActual > 4) {
-    stepperContainer.classList.add('hidden');
-    return;
-  }
-  stepperContainer.classList.remove('hidden');
+  const pageToStep = {
+    cotizacion: 1,
+    planes: 2,
+    datos: 3,
+    pago: 4
+  };
+
+  const paginaActual = document.body?.dataset?.page || '';
+  const pasoActual = pageToStep[paginaActual] || solicitud.paso || 1;
 
   const pasos = [
     { num: 1, label: 'Cotizar' },
@@ -60,12 +54,11 @@ export function renderStepper() {
   ];
 
   pasos.forEach((p) => {
-    const item = document.getElementById(`step-item-${p.num}`);
     const badge = document.getElementById(`step-badge-${p.num}`);
     const label = document.getElementById(`step-label-${p.num}`);
     const line = document.getElementById(`step-line-${p.num}`);
 
-    if (!item || !badge || !label) return;
+    if (!badge || !label) return;
 
     if (p.num < pasoActual) {
       // Completo
@@ -76,19 +69,19 @@ export function renderStepper() {
         </svg>
       `;
       label.className = 'text-xs md:text-sm font-medium text-emerald-700 hidden sm:inline-block';
-      if (line) line.className = 'flex-1 h-0.5 bg-emerald-600 transition-all';
+      if (line) line.className = 'h-0.5 bg-emerald-600 transition-all';
     } else if (p.num === pasoActual) {
       // Activo
       badge.className = 'w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold bg-indigo-600 text-white ring-4 ring-indigo-100 transition-all shadow';
       badge.textContent = p.num;
       label.className = 'text-xs md:text-sm font-bold text-indigo-700 inline-block';
-      if (line) line.className = 'flex-1 h-0.5 bg-slate-200 transition-all';
+      if (line) line.className = 'h-0.5 bg-slate-200 transition-all';
     } else {
       // Pendiente
       badge.className = 'w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold bg-white border-2 border-slate-300 text-slate-500 transition-all';
       badge.textContent = p.num;
       label.className = 'text-xs md:text-sm font-medium text-slate-500 hidden sm:inline-block';
-      if (line) line.className = 'flex-1 h-0.5 bg-slate-200 transition-all';
+      if (line) line.className = 'h-0.5 bg-slate-200 transition-all';
     }
   });
 }
@@ -130,7 +123,7 @@ export function renderPlanes() {
           </div>
           
           <div class="pt-3 border-t border-slate-100">
-            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Coberturas incluidas:</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Coberturas:</p>
             <ul class="space-y-2 text-sm text-slate-700">
               ${plan.coberturas
                 .map(
@@ -181,7 +174,6 @@ export function renderResumen() {
     ? `${solicitud.titular.nombre} ${solicitud.titular.apellido}`
     : 'Pendiente de carga';
 
-  // Actualizar elementos marcados con clases comunes
   document.querySelectorAll('.resumen-equipo-nombre').forEach((el) => {
     el.textContent = equipoStr;
   });
@@ -213,29 +205,32 @@ export function renderResumen() {
       .join('');
   });
 
-  // Si estamos en Paso 5 (Éxito), actualizar datos de éxito
-  if (solicitud.paso === 5) {
-    const exitoTitular = document.getElementById('exito-titular');
-    const exitoEmail = document.getElementById('exito-email');
-    const exitoPoliza = document.getElementById('exito-poliza');
-    const exitoEquipo = document.getElementById('exito-equipo');
-    const exitoPlan = document.getElementById('exito-plan');
-    const exitoCuota = document.getElementById('exito-cuota');
+  // Pantalla de éxito
+  const exitoTitular = document.getElementById('exito-titular');
+  const exitoEmail = document.getElementById('exito-email');
+  const exitoPoliza = document.getElementById('exito-poliza');
+  const exitoEquipo = document.getElementById('exito-equipo');
+  const exitoPlan = document.getElementById('exito-plan');
+  const exitoCuota = document.getElementById('exito-cuota');
 
-    if (exitoTitular) exitoTitular.textContent = titularStr;
-    if (exitoEmail) exitoEmail.textContent = solicitud.titular.email;
-    if (exitoPoliza) exitoPoliza.textContent = solicitud.poliza || 'POL-2026-000000';
-    if (exitoEquipo) exitoEquipo.textContent = equipoStr;
-    if (exitoPlan) exitoPlan.textContent = planActual.nombre;
-    if (exitoCuota) exitoCuota.textContent = cuotaFormateada;
+  if (exitoTitular) exitoTitular.textContent = titularStr;
+  if (exitoEmail) exitoEmail.textContent = solicitud.titular.email;
+  if (exitoPoliza) exitoPoliza.textContent = solicitud.poliza || 'POL-2026-000000';
+  if (exitoEquipo) exitoEquipo.textContent = equipoStr;
+  if (exitoPlan) exitoPlan.textContent = planActual.nombre;
+  if (exitoCuota) exitoCuota.textContent = cuotaFormateada;
+
+  // Pantalla de error
+  const errorMsgEl = document.getElementById('error-mensaje');
+  if (errorMsgEl && solicitud.errorPago) {
+    errorMsgEl.textContent = `${solicitud.errorPago}. Verificá los datos ingresados o probá con otra tarjeta.`;
   }
 }
 
 export function sincronizarCampos() {
-  // Sincronizar inputs desde el estado para no perder datos al navegar
   const activeEl = document.activeElement;
 
-  // Paso 1
+  // Paso 1: Cotización
   const marcaEl = document.getElementById('marca');
   if (marcaEl && marcaEl !== activeEl && solicitud.equipo.marca) {
     marcaEl.value = solicitud.equipo.marca;
@@ -256,7 +251,7 @@ export function sincronizarCampos() {
     if (radioAnt) radioAnt.checked = true;
   }
 
-  // Paso 3
+  // Paso 3: Datos personales
   const nombreEl = document.getElementById('nombre');
   if (nombreEl && nombreEl !== activeEl) nombreEl.value = solicitud.titular.nombre || '';
 
@@ -278,7 +273,12 @@ export function sincronizarCampos() {
   const terminosEl = document.getElementById('terminos');
   if (terminosEl) terminosEl.checked = !!solicitud.titular.terminos;
 
-  // Paso 4
+  // Paso 4: Pago
+  if (solicitud.pago.metodo) {
+    const radioMetodo = document.querySelector(`input[name="metodo_pago"][value="${solicitud.pago.metodo}"]`);
+    if (radioMetodo) radioMetodo.checked = true;
+  }
+
   const tarjEl = document.getElementById('tarjeta');
   if (tarjEl && tarjEl !== activeEl) tarjEl.value = solicitud.pago.tarjeta || '';
 
