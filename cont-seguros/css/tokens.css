@@ -1,0 +1,76 @@
+/* ============================================================
+   TP5 · Contratación Digital de Seguros — Tokens
+   Sobrescribe variables de Basecoat (estilo shadcn/ui).
+   ============================================================ */
+
+:root {
+  /* Colores del PDF */
+  --primary: #4F46E5;          /* indigo-600 */
+  --primary-700: #3730A3;      /* indigo-800 */
+  --primary-50: #EEF2FF;       /* indigo-50  */
+  --success: #059669;          /* emerald-600 */
+  --error: #DC2626;            /* red-600 */
+  --text: #0F172A;             /* slate-900 */
+  --muted: #64748B;            /* slate-500 */
+  --border: #E2E8F0;           /* slate-200 */
+  --bg: #F5F7FB;
+
+  /* Mapeo a variables de Basecoat (shadcn-like) */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: #ffffff;
+  --card-foreground: var(--text);
+  --popover: #ffffff;
+  --popover-foreground: var(--text);
+  --muted-foreground: var(--muted);
+  --accent: var(--primary-50);
+  --accent-foreground: var(--primary-700);
+  --destructive: var(--error);
+  --destructive-foreground: #ffffff;
+  --ring: var(--primary);
+  --input: var(--border);
+
+  /* Tipografía */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+/* Escala tipográfica del PDF (referencia; se aplica con clases Tailwind) */
+/* H2 24/800 · lead 15/400 · label 13/600 · help 12/400 */
+
+/* ---- Basecoat: forzar primario ---- */
+.btn[data-variant="default"],
+.btn:not([data-variant]) {
+  background-color: var(--primary);
+  color: #fff;
+}
+.btn[data-variant="default"]:hover,
+.btn:not([data-variant]):hover {
+  background-color: var(--primary-700);
+}
+
+/* ---- Field con error ---- */
+.field[data-invalid] label { color: var(--error); }
+.field[data-invalid] input,
+.field[data-invalid] select {
+  border-color: var(--error);
+  outline-color: var(--error);
+}
+.field[data-invalid] p[role="alert"] {
+  color: var(--error);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* ---- Stepper (Tailwind a mano) ---- */
+.stepper-step { color: var(--muted); }
+.stepper-step[data-state="complete"] { color: var(--success); }
+.stepper-step[data-state="active"]   { color: var(--primary); font-weight: 600; }
+
+/* ---- Utilidad para texto enmascarado / TODO Figma ---- */
+/* TODO: ajustar espaciados exactos cuando se inspeccione el Figma */

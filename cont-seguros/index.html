@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cubri Seguros · Inicio</title>
+  <!-- Basecoat UI (estilos de componentes) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.1.0/dist/basecoat.cdn.min.css">
+  <!-- Tailwind v4 en el navegador -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body data-page="inicio" class="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+  <main class="mx-auto max-w-6xl px-4 py-8 lg:py-16">
+    <!-- TODO Figma: hero a la izquierda y grilla a la derecha en desktop -->
+    <header class="mb-8">
+      <p class="text-sm text-[var(--muted)]">Cubri Seguros</p>
+      <h1 class="text-2xl font-extrabold mt-1">Elegí tu seguro</h1>
+      <p class="text-[15px] text-[var(--muted)] mt-1">Contratá 100% online en minutos.</p>
+    </header>
+
+    <section class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <!-- Celular (habilitado) -->
+      <a href="cotizacion.html" class="card block p-4 hover:border-[var(--primary)] transition">
+        <div class="text-3xl">📱</div>
+        <h2 class="font-semibold mt-2">Celular</h2>
+        <p class="text-xs text-[var(--muted)] mt-1">Protegé tu equipo.</p>
+        <span class="badge mt-3 inline-block" data-variant="default">Disponible</span>
+      </a>
+
+      <!-- Hogar (próximamente) -->
+      <div class="card block p-4 opacity-60 cursor-not-allowed">
+        <div class="text-3xl">🏠</div>
+        <h2 class="font-semibold mt-2">Hogar</h2>
+        <span class="badge mt-3 inline-block" data-variant="outline">Próximamente</span>
+      </div>
+
+      <!-- Bicicleta -->
+      <div class="card block p-4 opacity-60 cursor-not-allowed">
+        <div class="text-3xl">🚲</div>
+        <h2 class="font-semibold mt-2">Bicicleta</h2>
+        <span class="badge mt-3 inline-block" data-variant="outline">Próximamente</span>
+      </div>
+
+      <!-- Viaje -->
+      <div class="card block p-4 opacity-60 cursor-not-allowed">
+        <div class="text-3xl">✈️</div>
+        <h2 class="font-semibold mt-2">Viaje</h2>
+        <span class="badge mt-3 inline-block" data-variant="outline">Próximamente</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

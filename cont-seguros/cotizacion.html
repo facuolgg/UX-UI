@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cubri Seguros · Cotizar</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.1.0/dist/basecoat.cdn.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body data-page="cotizacion" data-paso="1" class="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+  <main class="mx-auto max-w-6xl px-4 py-6 lg:py-10">
+    <!-- Stepper -->
+    <ol data-stepper class="flex items-center gap-2 mb-6 text-sm">
+      <li data-step="1" data-state="active">1 · Cotizar</li>
+      <li data-step="2" data-state="pending">2 · Plan</li>
+      <li data-step="3" data-state="pending">3 · Datos</li>
+      <li data-step="4" data-state="pending">4 · Pago</li>
+    </ol>
+
+    <div class="grid gap-8 lg:grid-cols-[1fr_380px]">
+      <form id="form-cotizacion" class="card p-5 space-y-4" novalidate>
+        <h1 class="text-2xl font-extrabold">Cotizá tu seguro de celular</h1>
+
+        <div role="group" class="field" data-field="marca">
+          <label for="marca">Marca</label>
+          <select id="marca" name="marca">
+            <option value="">Elegí una marca</option>
+            <option>Samsung</option>
+            <option>Apple</option>
+            <option>Motorola</option>
+            <option>Xiaomi</option>
+            <option>Otro</option>
+          </select>
+          <p role="alert" hidden></p>
+        </div>
+
+        <div role="group" class="field" data-field="modelo">
+          <label for="modelo">Modelo</label>
+          <input id="modelo" name="modelo" type="text" placeholder="Galaxy A55">
+          <p role="alert" hidden></p>
+        </div>
+
+        <div role="group" class="field" data-field="valor">
+          <label for="valor">Valor del equipo</label>
+          <input id="valor" name="valor" type="text" inputmode="numeric" placeholder="$ 600.000">
+          <p class="text-xs text-[var(--muted)] mt-1">Entre $100.000 y $2.500.000</p>
+          <p role="alert" hidden></p>
+        </div>
+
+        <div role="group" class="field" data-field="antiguedad">
+          <label>Antigüedad</label>
+          <div class="flex gap-2 mt-1">
+            <label class="btn" data-variant="outline">
+              <input type="radio" name="antiguedad" value="menos1" class="mr-1"> Menos de 1 año
+            </label>
+            <label class="btn" data-variant="outline">
+              <input type="radio" name="antiguedad" value="1a2" class="mr-1"> 1 a 2 años
+            </label>
+            <label class="btn" data-variant="outline">
+              <input type="radio" name="antiguedad" value="mas2" class="mr-1"> Más de 2 años
+            </label>
+          </div>
+          <p role="alert" hidden></p>
+        </div>
+
+        <div class="flex gap-2 pt-2">
+          <a href="index.html" class="btn" data-variant="outline">Volver</a>
+          <button id="btn-ver-planes" class="btn" type="submit" disabled>Ver planes</button>
+        </div>
+        <p id="hint-cotizacion" class="text-xs text-[var(--muted)]">Completá todos los campos para continuar.</p>
+      </form>
+
+      <aside data-resumen class="card p-5 lg:sticky lg:top-4 h-fit"><!-- render --></aside>
+    </div>
+  </main>
+  <script type="module" src="js/cotizacion.js"></script>
+</body>
+</html>
