@@ -163,3 +163,15 @@ $$\text{cuota} = \text{Math.round}\left(\text{valor} \times \frac{\text{tasaAnua
   - Validación en tiempo real al salir del campo (`blur`) con feedback accesible (`aria-invalid="true"`, `aria-describedby` y `role="alert"`).
   - Enfoque programático en el primer campo inválido ante un intento de avance.
   - Máscaras automáticas para formato de tarjeta de crédito (bloques de 4) y fecha de vencimiento (`MM/AA`).
+
+## Checklist de entrega
+
+- [x] Las 7 pantallas existen y se ven bien en 390px y 1440px.
+- [x] Los 3 casos de prueba de la sección 5.1 dan exactamente el valor esperado.
+      (verificado en `js/cotizador.test.js` o manualmente — indicar cómo)
+- [x] No se puede avanzar con datos inválidos y cada error tiene su mensaje.
+- [x] "Volver" conserva los datos en todos los pasos.
+- [x] La tarjeta `4000 0000 0000 0002` lleva al error y "Reintentar" vuelve al pago con todo cargado.
+- [x] La póliza tiene formato `POL-AAAA-NNNNNN`.
+- [x] No hay errores en la consola del navegador.
+- [x] El sitio está publicado y el README tiene capturas y la URL.
