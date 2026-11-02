@@ -56,6 +56,56 @@ Para la integración JavaScript entre páginas se optó por un único entry `js/
 
 ---
 
+## Capturas de pantalla
+
+Muestra visual del flujo completo de contratación digital tanto en versión mobile (390px) como desktop (1440px).
+
+### Flujo de contratación
+
+### 01 · Inicio / Catálogo
+
+| Mobile (390px) | Desktop (1440px) |
+|---|---|
+| ![Pantalla de inicio en mobile](capturas/mobile/01_mobile-inicio.png) | ![Pantalla de inicio en desktop](capturas/desktop/01_desktop-inicio.png) |
+
+### 02 · Cotizar (Paso 1)
+
+| Mobile (390px) | Desktop (1440px) |
+|---|---|
+| ![Pantalla de cotización en mobile](capturas/mobile/02_mobile-cotizacion.png) | ![Pantalla de cotización en desktop](capturas/desktop/02_desktop-cotizacion.png) |
+
+### 03 · Elegir plan (Paso 2)
+
+| Mobile (390px) | Desktop (1440px) |
+|---|---|
+| ![Pantalla de elección de plan en mobile](capturas/mobile/03_mobile-planes.png) | ![Pantalla de elección de plan en desktop](capturas/desktop/03_desktop-planes.png) |
+
+### 04 · Datos personales (Paso 3)
+
+| Mobile (390px) | Desktop (1440px) |
+|---|---|
+| ![Pantalla de datos personales en mobile](capturas/mobile/04_mobile-datos.png) | ![Pantalla de datos personales en desktop](capturas/desktop/04_desktop-datos.png) |
+
+### 05 · Pago (Paso 4)
+
+| Mobile (390px) | Desktop (1440px) |
+|---|---|
+| ![Pantalla de pago en mobile](capturas/mobile/05_mobile-pago.png) | ![Pantalla de pago en desktop](capturas/desktop/05_desktop-pago.png) |
+
+### 06 · Éxito
+
+| Mobile (390px) | Desktop (1440px) |
+|---|---|
+| ![Pantalla de éxito en mobile](capturas/mobile/06_mobile-exito.png) | ![Pantalla de éxito en desktop](capturas/desktop/06_desktop-exito.png) |
+
+### 07 · Error de pago
+
+| Mobile (390px) | Desktop (1440px) |
+|---|---|
+| ![Pantalla de error de pago en mobile](capturas/mobile/07_mobile-error.png) | ![Pantalla de error de pago en desktop](capturas/desktop/07_desktop-error.png) |
+
+---
+
 ## 🚀 Cómo ejecutar el proyecto
 
 Dado que el proyecto utiliza módulos ES (`<script type="module">`) y carga los planes mediante `fetch('data/planes.json')`, debe ejecutarse a través de un servidor local (para evitar bloqueos CORS por protocolo `file://`).
