@@ -384,8 +384,176 @@
     </section>
 
     <!-- Sección: Sobre mí -->
-    <section id="sobre-mi" class="py-16 md:py-24 bg-surface-card">
-      <!-- El contenido de sobre mí se completará en la Fase 6 -->
+    <section id="sobre-mi" class="py-16 md:py-24 bg-surface-card border-t border-stroke/60 relative overflow-hidden">
+      
+      <!-- Fondo con forma orgánica sutil -->
+      <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-primary/[0.04] blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Encabezado de la Sección -->
+        <div class="max-w-2xl mb-12 md:mb-16">
+          <p class="text-primary font-semibold tracking-wider uppercase text-xs sm:text-sm mb-2">
+            Conocé mi perfil
+          </p>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-content tracking-tight">
+            Sobre mí
+          </h2>
+        </div>
+
+        <!-- Presentación Principal: Foto + Bio -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-20">
+          
+          <!-- Foto circular con forma orgánica azul de fondo -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 flex items-center justify-center">
+              
+              <!-- Forma orgánica azul de fondo (SVG con #1E3A8A) -->
+              <svg 
+                class="absolute inset-0 w-full h-full text-primary opacity-20 transform scale-110 -rotate-6 transition-transform duration-700 hover:rotate-3" 
+                viewBox="0 0 200 200" 
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path 
+                  fill="currentColor" 
+                  d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C86.9,14.6,81.2,29.1,72.4,41.4C63.6,53.7,51.8,63.7,38.5,70.9C25.2,78,10.6,82.3,-3.8,88.9C-18.2,95.5,-32.4,104.4,-44.6,99.9C-56.7,95.4,-66.8,77.5,-74.6,60.8C-82.5,44.1,-88.2,28.6,-88.7,13.4C-89.2,-1.7,-84.5,-16.6,-77.7,-30.5C-70.9,-44.4,-62.1,-57.4,-49.8,-65.4C-37.4,-73.4,-21.5,-76.5,-4.8,-68.2C11.9,-59.9,30.6,-83.7,44.7,-76.4Z" 
+                  transform="translate(100 100)" 
+                />
+              </svg>
+
+              <!-- Foto Circular -->
+              <div class="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl bg-slate-100 ring-1 ring-stroke">
+                <img 
+                  src="assets/img/sobre-mi/foto-perfil.jpg" 
+                  alt="Foto de perfil de Facundo Federico Olguín" 
+                  class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                  width="256"
+                  height="256"
+                  loading="lazy"
+                >
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Párrafo de Presentación (3-5 líneas) y Enfoque -->
+          <div class="lg:col-span-7 space-y-6">
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-content leading-snug">
+              Diseñando interfaces limpias, intuitivas y centradas en el propósito.
+            </h3>
+            
+            <p class="text-content-secondary text-base sm:text-lg leading-relaxed">
+              Soy estudiante de Sistemas de Información apasionado por el diseño UX/UI. Mi enfoque se centra en crear experiencias digitales claras y funcionales, priorizando la arquitectura de información y la usabilidad antes que la ornamentación. Apelo al uso reflexivo de la Inteligencia Artificial como herramienta para explorar variantes y optimizar tiempos, manteniendo siempre la mirada crítica y el criterio de diseño en el centro de cada decisión.
+            </p>
+
+            <!-- Datos breves / Chips de contexto -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-stroke shadow-2xs">
+                <div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <span class="block text-xs text-content-secondary">Ubicación</span>
+                  <span class="text-sm font-semibold text-content">Concepción del Uruguay, AR</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-stroke shadow-2xs">
+                <div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="block text-xs text-content-secondary">Formación</span>
+                  <span class="text-sm font-semibold text-content">Sistemas de Información</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Bloque de Principios de Trabajo -->
+        <div class="pt-8 border-t border-stroke">
+          <div class="max-w-2xl mb-8">
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-content tracking-tight mb-2">
+              Principios de trabajo
+            </h3>
+            <p class="text-content-secondary text-sm sm:text-base">
+              Los pilares metodológicos que guían cada flujo y decisión de interfaz.
+            </p>
+          </div>
+
+          <!-- 3 Tarjetas de Principios -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Principio 1 -->
+            <div class="bg-white rounded-2xl border border-stroke p-6 sm:p-7 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 shrink-0">
+                <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="m10 15 5-3-5-3v6Z"></path>
+                  <path d="M12 2a10 10 0 0 1 10 10"></path>
+                </svg>
+              </div>
+              <h4 class="font-serif text-xl font-bold text-content mb-2">
+                Claridad ante todo
+              </h4>
+              <p class="text-content-secondary text-sm leading-relaxed flex-1">
+                Una interfaz debe comunicarse sin fricción. Reducir el ruido visual prioriza la comprensión del contenido y la toma de decisiones del usuario.
+              </p>
+            </div>
+
+            <!-- Principio 2 -->
+            <div class="bg-white rounded-2xl border border-stroke p-6 sm:p-7 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 shrink-0">
+                <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+                  <rect width="7" height="7" x="14" y="3" rx="1"></rect>
+                  <rect width="7" height="7" x="14" y="14" rx="1"></rect>
+                  <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+                </svg>
+              </div>
+              <h4 class="font-serif text-xl font-bold text-content mb-2">
+                Proceso antes que estética
+              </h4>
+              <p class="text-content-secondary text-sm leading-relaxed flex-1">
+                Los "esqueletos" y la arquitectura de información son la base. El diseño visual cobra sentido real cuando resuelve flujos concretos y necesidades probadas.
+              </p>
+            </div>
+
+            <!-- Principio 3 -->
+            <div class="bg-white rounded-2xl border border-stroke p-6 sm:p-7 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 shrink-0">
+                <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v8"></path>
+                  <path d="m4.93 10.93 1.41 1.41"></path>
+                  <path d="M2 18h2"></path>
+                  <path d="M20 18h2"></path>
+                  <path d="m19.07 10.93-1.41 1.41"></path>
+                  <path d="M22 22H2"></path>
+                  <path d="m8 22 4-10 4 10"></path>
+                </svg>
+              </div>
+              <h4 class="font-serif text-xl font-bold text-content mb-2">
+                Aprendizaje continuo
+              </h4>
+              <p class="text-content-secondary text-sm leading-relaxed flex-1">
+                Evolución constante integrando herramientas modernas como IA con sentido crítico, experimentando sin perder el rigor metodológico.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- Sección: Contacto -->
