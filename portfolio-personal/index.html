@@ -4,12 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Facundo Federico Olguín | UX/UI Designer</title>
-  <meta name="description" content="Portfolio de Facundo Federico Olguín, UX/UI Designer y estudiante de Sistemas de Información enfocado en experiencias claras y funcionales.">
-  
-  <!-- Favicon -->
+  <meta name="description" content="Portfolio de Facundo Federico Olguín, UX/UI Designer y estudiante de Sistemas de Información enfocado en el diseño de experiencias claras y funcionales mediante el uso prudente de Inteligencia Artificial. Concepción del Uruguay, Argentina.">
+  <meta name="author" content="Facundo Federico Olguín">
+  <meta name="theme-color" content="#1E3A8A">
+  <link rel="canonical" href="https://facundoolguin.netlify.app/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://facundoolguin.netlify.app/">
+  <meta property="og:title" content="Facundo Federico Olguín | UX/UI Designer">
+  <meta property="og:description" content="Estudiante de Sistemas de Información enfocado en diseño de experiencias claras y funcionales mediante el uso prudente de Inteligencia Artificial.">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta property="og:image:alt" content="Portfolio de Facundo Federico Olguín - UX/UI Designer">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://facundoolguin.netlify.app/">
+  <meta name="twitter:title" content="Facundo Federico Olguín | UX/UI Designer">
+  <meta name="twitter:description" content="Estudiante de Sistemas de Información enfocado en diseño de experiencias claras y funcionales mediante el uso prudente de Inteligencia Artificial.">
+  <meta name="twitter:image" content="assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Portfolio de Facundo Federico Olguín - UX/UI Designer">
+
+  <!-- Favicon SVG con iniciales "FO" sobre fondo #1E3A8A -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Google Fonts: Inter & Playfair Display -->
+  <!-- Google Fonts: Inter & Playfair Display con font-display: swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -107,10 +127,10 @@
   </header>
 
   <!-- Contenido Principal -->
-  <main id="contenido-principal" class="flex-grow">
+  <main id="contenido-principal" class="flex-grow focus:outline-none" tabindex="-1">
     
     <!-- Sección: Hero -->
-    <section id="hero" class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-32 bg-white">
+    <section id="hero" class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-32 bg-white scroll-mt-24">
       
       <!-- Formas orgánicas decorativas de fondo (SVG con azul marino #1E3A8A) -->
       <div class="absolute -top-24 -right-24 md:-top-32 md:-right-32 w-96 h-96 md:w-[32rem] md:h-[32rem] rounded-full bg-primary/5 blur-3xl pointer-events-none" aria-hidden="true"></div>
@@ -175,7 +195,7 @@
     </section>
 
     <!-- Sección: Proyectos -->
-    <section id="proyectos" class="py-16 md:py-24 border-t border-stroke/60 bg-surface-card/40">
+    <section id="proyectos" class="py-16 md:py-24 border-t border-stroke/60 bg-surface-card/40 scroll-mt-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Encabezado de Sección -->
@@ -384,7 +404,7 @@
     </section>
 
     <!-- Sección: Sobre mí -->
-    <section id="sobre-mi" class="py-16 md:py-24 bg-surface-card border-t border-stroke/60 relative overflow-hidden">
+    <section id="sobre-mi" class="py-16 md:py-24 bg-surface-card border-t border-stroke/60 relative overflow-hidden scroll-mt-24">
       
       <!-- Fondo con forma orgánica sutil -->
       <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-primary/[0.04] blur-3xl pointer-events-none" aria-hidden="true"></div>
@@ -557,7 +577,7 @@
     </section>
 
     <!-- Sección: Contacto -->
-    <section id="contacto" class="py-16 md:py-24 bg-white relative overflow-hidden">
+    <section id="contacto" class="py-16 md:py-24 bg-white relative overflow-hidden scroll-mt-24">
       
       <!-- Fondo decorativo sutil -->
       <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary/[0.03] blur-3xl pointer-events-none" aria-hidden="true"></div>
@@ -852,6 +872,8 @@
                     alt="Pantalla de inicio y descubrimiento de obras en OpenArt" 
                     class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
                     loading="lazy"
+                    width="600"
+                    height="450"
                   >
                 </div>
                 <figcaption class="p-3 text-xs text-content-secondary font-medium border-t border-stroke bg-white">
@@ -866,6 +888,8 @@
                     alt="Pantalla de detalle de obra de arte en OpenArt" 
                     class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
                     loading="lazy"
+                    width="600"
+                    height="450"
                   >
                 </div>
                 <figcaption class="p-3 text-xs text-content-secondary font-medium border-t border-stroke bg-white">
@@ -880,6 +904,8 @@
                     alt="Pantalla de flujo de compra y checkout en OpenArt" 
                     class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
                     loading="lazy"
+                    width="600"
+                    height="450"
                   >
                 </div>
                 <figcaption class="p-3 text-xs text-content-secondary font-medium border-t border-stroke bg-white">
