@@ -175,8 +175,212 @@
     </section>
 
     <!-- Sección: Proyectos -->
-    <section id="proyectos" class="py-16 md:py-24">
-      <!-- La grilla de proyectos se completará en la Fase 4 -->
+    <section id="proyectos" class="py-16 md:py-24 border-t border-stroke/60 bg-surface-card/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Encabezado de Sección -->
+        <div class="max-w-2xl mb-12 md:mb-16">
+          <p class="text-primary font-semibold tracking-wider uppercase text-xs sm:text-sm mb-2">
+            Portfolio
+          </p>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-content tracking-tight mb-4">
+            Proyectos
+          </h2>
+          <p class="text-content-secondary text-base sm:text-lg">
+            Soluciones digitales que combinan diseño de interfaces centrado en el usuario, investigación y prototipado asistido por inteligencia artificial.
+          </p>
+        </div>
+
+        <!-- Grilla Responsive (1 col mobile, 2 col tablet, 3 col desktop) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          
+          <!-- Proyecto 1: Coffee Landing -->
+          <article class="bg-white rounded-2xl border border-stroke overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100 border-b border-stroke">
+              <img 
+                src="assets/img/proyectos/coffee-hero.png" 
+                alt="Vista previa del proyecto Coffee Landing" 
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width="600"
+                height="375"
+              >
+              <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-full text-xs font-semibold text-content border border-stroke/80">
+                2026
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-serif text-2xl font-bold text-content mb-2 group-hover:text-primary transition-colors">
+                Coffee Landing
+              </h3>
+              
+              <p class="text-content-secondary text-sm leading-relaxed mb-5 flex-1">
+                Landing page con PRD, uso de IA y despliegue en Netlify.
+              </p>
+
+              <!-- Tags / Chips -->
+              <div class="flex flex-wrap gap-1.5 mb-6" aria-label="Tecnologías utilizadas">
+                <span class="px-2.5 py-1 rounded-md bg-surface-card border border-stroke text-xs font-medium text-content-secondary">
+                  VSCode Copilot
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-surface-card border border-stroke text-xs font-medium text-content-secondary">
+                  Deepseek
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-surface-card border border-stroke text-xs font-medium text-content-secondary">
+                  Netlify
+                </span>
+              </div>
+
+              <!-- Botón Ver Proyecto -->
+              <a 
+                href="https://github.com/facuolgg/UX-UI/tree/main/coffee-landing" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl border border-stroke bg-white hover:bg-surface-card text-content hover:text-primary hover:border-primary/40 text-sm font-medium transition-all group/btn focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                <span>Ver Proyecto</span>
+                <svg class="w-4 h-4 stroke-current transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Proyecto 2: Seguros -->
+          <article class="bg-white rounded-2xl border border-stroke overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100 border-b border-stroke">
+              <img 
+                src="assets/img/proyectos/seguros-hero.png" 
+                alt="Vista previa del proyecto de Contratación digital de seguros" 
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width="600"
+                height="375"
+              >
+              <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-full text-xs font-semibold text-content border border-stroke/80">
+                2026
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-serif text-2xl font-bold text-content mb-2 group-hover:text-primary transition-colors">
+                Seguros
+              </h3>
+              
+              <p class="text-content-secondary text-sm leading-relaxed mb-5 flex-1">
+                Contratación digital de seguros con PRD, uso de IA y despliegue en Netlify.
+              </p>
+
+              <!-- Tags / Chips -->
+              <div class="flex flex-wrap gap-1.5 mb-6" aria-label="Tecnologías utilizadas">
+                <span class="px-2.5 py-1 rounded-md bg-surface-card border border-stroke text-xs font-medium text-content-secondary">
+                  Antigravity IDE
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-surface-card border border-stroke text-xs font-medium text-content-secondary">
+                  Deepseek
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-surface-card border border-stroke text-xs font-medium text-content-secondary">
+                  Netlify
+                </span>
+              </div>
+
+              <!-- Botón Ver Proyecto -->
+              <a 
+                href="https://github.com/facuolgg/UX-UI/tree/main/seguros" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl border border-stroke bg-white hover:bg-surface-card text-content hover:text-primary hover:border-primary/40 text-sm font-medium transition-all group/btn focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                <span>Ver Proyecto</span>
+                <svg class="w-4 h-4 stroke-current transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Proyecto 3: OpenArt (Abre modal de caso de estudio) -->
+          <article class="bg-white rounded-2xl border border-stroke overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group relative">
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100 border-b border-stroke">
+              <img 
+                src="assets/img/proyectos/openart-home.png" 
+                alt="Vista previa de la plataforma de arte digital OpenArt" 
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width="600"
+                height="375"
+              >
+              <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-full text-xs font-semibold text-content border border-stroke/80">
+                2026
+              </div>
+              <div class="absolute top-3 left-3 bg-primary text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow-xs">
+                Caso de Estudio
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="flex items-baseline justify-between gap-2 mb-2">
+                <h3 class="font-serif text-2xl font-bold text-content group-hover:text-primary transition-colors">
+                  OpenArt
+                </h3>
+                <a 
+                  href="https://github.com/facuolgg/UX-UI/tree/main/OpenArt" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="text-xs text-content-secondary hover:text-primary flex items-center gap-1"
+                  title="Ver repositorio en GitHub"
+                  aria-label="Ver repositorio de OpenArt en GitHub"
+                >
+                  <span>Repo</span>
+                  <svg class="w-3.5 h-3.5 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17 17 7"></path>
+                  </svg>
+                </a>
+              </div>
+              
+              <p class="text-content-secondary text-sm leading-relaxed mb-5 flex-1">
+                Plataforma de venta de obras de arte digitales. Primer trabajo complejo de la materia.
+              </p>
+
+              <!-- Tags / Chips -->
+              <div class="flex flex-wrap gap-1.5 mb-6" aria-label="Tecnologías utilizadas">
+                <span class="px-2.5 py-1 rounded-md bg-surface-card border border-stroke text-xs font-medium text-content-secondary">
+                  Figma
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-surface-card border border-stroke text-xs font-medium text-content-secondary">
+                  Figma AI
+                </span>
+              </div>
+
+              <!-- Botón Ver Proyecto (Abre Modal en Fase 5) -->
+              <button 
+                type="button" 
+                id="btn-open-modal-openart" 
+                data-modal-target="modal-openart"
+                class="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl border border-primary bg-primary hover:bg-primary-dark text-white text-sm font-medium transition-all group/btn shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
+              >
+                <span class="flex items-center gap-2">
+                  <svg class="w-4 h-4 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                  </svg>
+                  <span>Ver Proyecto (Caso de Estudio)</span>
+                </span>
+                <svg class="w-4 h-4 stroke-current transition-transform group-hover/btn:translate-x-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
     </section>
 
     <!-- Sección: Sobre mí -->
