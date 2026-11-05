@@ -400,8 +400,198 @@
     <!-- El contenido del footer se completará en la Fase 7 -->
   </footer>
 
-  <!-- Contenedor Modal de Caso de Estudio (Fase 5) -->
-  <div id="modal-container" aria-hidden="true"></div>
+  <!-- Modal del Caso de Estudio: OpenArt -->
+  <div 
+    id="modal-openart" 
+    class="fixed inset-0 z-50 hidden overflow-y-auto"
+    role="dialog" 
+    aria-modal="true" 
+    aria-labelledby="modal-openart-title"
+    aria-describedby="modal-openart-desc"
+  >
+    <!-- Backdrop oscurecido -->
+    <div id="modal-openart-backdrop" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs transition-opacity" aria-hidden="true"></div>
+
+    <!-- Contenedor central -->
+    <div class="min-h-full flex items-center justify-center p-3 sm:p-6 text-center">
+      <div class="relative w-full max-w-4xl bg-white rounded-2xl border border-stroke text-left shadow-2xl overflow-hidden my-8 transform transition-all flex flex-col max-h-[88vh]">
+        
+        <!-- Encabezado del Modal -->
+        <div class="px-6 py-5 border-b border-stroke flex items-center justify-between bg-surface-card/60 sticky top-0 z-10 backdrop-blur-xs">
+          <div>
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-primary mb-1">
+              Caso de Estudio • 2026
+            </span>
+            <h3 id="modal-openart-title" class="font-serif text-2xl sm:text-3xl font-bold text-content leading-snug">
+              OpenArt
+            </h3>
+            <p id="modal-openart-desc" class="text-xs sm:text-sm text-content-secondary mt-0.5">
+              Plataforma de venta de obras de arte digitales
+            </p>
+          </div>
+          
+          <!-- Botón Cerrar (X) -->
+          <button 
+            type="button" 
+            id="modal-openart-close-btn"
+            class="p-2 rounded-xl text-content-secondary hover:text-content hover:bg-stroke/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
+            aria-label="Cerrar modal de caso de estudio"
+          >
+            <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Cuerpo Scrollable del Modal -->
+        <div class="overflow-y-auto p-6 sm:p-8 space-y-8 text-content">
+          
+          <!-- Bloque 1: Problema -->
+          <section class="space-y-3">
+            <div class="flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider">
+              <svg class="w-4 h-4 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Problema</span>
+            </div>
+            <p class="text-content text-base sm:text-lg leading-relaxed">
+              El brief solicitaba una plataforma para la venta de obras de arte digitales con distintos flujos y funciones. Se partió de una estructura previa en Figma proporcionada en la materia, también llamada OpenArt, que no cubría todos los requisitos del brief ni estaba adaptada a los flujos específicos que se pedían. El desafío fue tomar esa base existente, analizarla y reestructurarla para que respondiera a las necesidades del proyecto.
+            </p>
+          </section>
+
+          <!-- Bloque 2: Proceso -->
+          <section class="space-y-3">
+            <div class="flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider">
+              <svg class="w-4 h-4 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"></path>
+                <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+              </svg>
+              <span>Proceso</span>
+            </div>
+            <p class="text-content text-base sm:text-lg leading-relaxed">
+              1) Análisis del brief y de la estructura previa: se revisó la base proporcionada para identificar qué servía y qué había que modificar o agregar según los requisitos. 2) Arquitectura de información: se redefinieron los "esqueletos" de la aplicación — qué pantallas existían, cómo se conectaban y qué flujos cubrían (descubrimiento, detalle de obra, compra). 3) Prototipado e iteración: se trabajó en Figma (con apoyo de Figma AI) para generar variantes, explorar alternativas y ajustar las pantallas a los flujos pedidos. 4) Validación: se revisaron los flujos para garantizar coherencia y que se cumplieran los requisitos del brief.
+            </p>
+          </section>
+
+          <!-- Galería de Imágenes del Proceso -->
+          <section class="space-y-4 pt-2">
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-content-secondary">
+              Evidencias visuales del proceso y flujos clave
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              
+              <figure class="rounded-xl border border-stroke overflow-hidden bg-surface-card flex flex-col">
+                <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+                  <img 
+                    src="assets/img/proyectos/openart-home.png" 
+                    alt="Pantalla de inicio y descubrimiento de obras en OpenArt" 
+                    class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  >
+                </div>
+                <figcaption class="p-3 text-xs text-content-secondary font-medium border-t border-stroke bg-white">
+                  1. Home &amp; Descubrimiento
+                </figcaption>
+              </figure>
+
+              <figure class="rounded-xl border border-stroke overflow-hidden bg-surface-card flex flex-col">
+                <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+                  <img 
+                    src="assets/img/proyectos/openart-detalle.png" 
+                    alt="Pantalla de detalle de obra de arte en OpenArt" 
+                    class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  >
+                </div>
+                <figcaption class="p-3 text-xs text-content-secondary font-medium border-t border-stroke bg-white">
+                  2. Ficha y Detalle de Obra
+                </figcaption>
+              </figure>
+
+              <figure class="rounded-xl border border-stroke overflow-hidden bg-surface-card flex flex-col">
+                <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+                  <img 
+                    src="assets/img/proyectos/openart-checkout.png" 
+                    alt="Pantalla de flujo de compra y checkout en OpenArt" 
+                    class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  >
+                </div>
+                <figcaption class="p-3 text-xs text-content-secondary font-medium border-t border-stroke bg-white">
+                  3. Flujo de Compra / Checkout
+                </figcaption>
+              </figure>
+
+            </div>
+          </section>
+
+          <!-- Bloque 3: Solución -->
+          <section class="space-y-3">
+            <div class="flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider">
+              <svg class="w-4 h-4 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span>Solución</span>
+            </div>
+            <p class="text-content text-base sm:text-lg leading-relaxed">
+              Se entregó un prototipo navegable en Figma con las pantallas clave de OpenArt (home, catálogo, detalle de obra y flujo de compra), partiendo de la estructura proporcionada pero adaptándola a los flujos y funciones del brief. El diseño priorizó la obra de arte como protagonista, con una interfaz sobria que no compitiera visualmente con las piezas.
+            </p>
+          </section>
+
+          <!-- Bloque 4: Resultado / Aprendizaje -->
+          <section class="space-y-3 p-5 rounded-xl bg-surface-card border border-stroke">
+            <div class="flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider">
+              <svg class="w-4 h-4 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+              </svg>
+              <span>Resultado / Aprendizaje</span>
+            </div>
+            <p class="text-content text-base sm:text-lg leading-relaxed">
+              Fue el primer trabajo complejo de la materia. El principal aprendizaje fue entender la importancia de los "esqueletos" (la arquitectura de información) antes de saltar al diseño visual, y aprender a trabajar sobre una base existente sin copiarla, sino adaptándola a los requisitos. También permitió explorar el uso de IA (Figma AI) como herramienta de prototipado, comprendiendo que acelera la exploración pero no reemplaza las decisiones de diseño.
+            </p>
+          </section>
+
+        </div>
+
+        <!-- Pie del Modal con Acciones -->
+        <div class="px-6 py-4 border-t border-stroke bg-surface-card/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <a 
+            href="https://github.com/facuolgg/UX-UI/tree/main/OpenArt" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-dark transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1"
+          >
+            <span>Ver repositorio en GitHub</span>
+            <svg class="w-4 h-4 stroke-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
+          
+          <button 
+            type="button" 
+            id="modal-openart-footer-close-btn"
+            class="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-stroke bg-white hover:bg-surface-card text-content text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
+          >
+            Cerrar caso de estudio
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- JavaScript -->
   <script src="script.js" defer></script>
