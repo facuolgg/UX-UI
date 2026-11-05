@@ -110,8 +110,68 @@
   <main id="contenido-principal" class="flex-grow">
     
     <!-- Sección: Hero -->
-    <section id="hero" class="relative overflow-hidden">
-      <!-- El contenido del hero se completará en la Fase 3 -->
+    <section id="hero" class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-32 bg-white">
+      
+      <!-- Formas orgánicas decorativas de fondo (SVG con azul marino #1E3A8A) -->
+      <div class="absolute -top-24 -right-24 md:-top-32 md:-right-32 w-96 h-96 md:w-[32rem] md:h-[32rem] rounded-full bg-primary/5 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute top-1/2 -left-32 md:-left-48 w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full bg-primary/[0.03] blur-2xl pointer-events-none" aria-hidden="true"></div>
+      
+      <svg class="absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 w-[450px] h-[450px] md:w-[700px] md:h-[700px] opacity-[0.06] pointer-events-none text-primary" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M421.5 130.5C478 184 513 259 494.5 329C476 399 404 464 329 487.5C254 511 176 493 116.5 448.5C57 404 16 333 19.5 264C23 195 71 128 134 83C197 38 275 15 344 38.5C413 62 465 77 421.5 130.5Z" fill="currentColor"/>
+      </svg>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl">
+          
+          <!-- Badge de disponibilidad -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-surface-card border border-stroke text-xs md:text-sm font-medium text-content-secondary mb-6 shadow-xs">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span>Disponible para nuevos proyectos</span>
+            <span class="text-stroke" aria-hidden="true">•</span>
+            <span class="text-content-secondary/80">Concepción del Uruguay, AR</span>
+          </div>
+
+          <!-- Kicker de Rol -->
+          <p class="text-primary font-semibold tracking-wider uppercase text-xs sm:text-sm mb-3">
+            UX/UI Designer
+          </p>
+
+          <!-- Título Principal -->
+          <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-content tracking-tight leading-[1.1] mb-6">
+            Hola, soy <span class="text-primary underline decoration-primary/25 decoration-wavy decoration-2 underline-offset-8">Facundo Olguín</span>
+          </h1>
+
+          <!-- Propuesta de Valor -->
+          <p class="text-content-secondary text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl font-normal">
+            Estudiante de Sistemas de Información enfocado en el diseño de experiencias claras y funcionales mediante el uso prudente de Inteligencia Artificial.
+          </p>
+
+          <!-- Botones de Acción (CTA) -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <!-- Botón Primario: Ver Proyectos -->
+            <a href="#proyectos" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-base font-medium text-white bg-primary hover:bg-primary-dark rounded-xl transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group">
+              <span>Ver Proyectos</span>
+              <svg class="w-4 h-4 stroke-current transition-transform group-hover:translate-y-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14"></path>
+                <path d="m19 12-7 7-7-7"></path>
+              </svg>
+            </a>
+
+            <!-- Botón Secundario: Contacto -->
+            <a href="#contacto" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-base font-medium text-content bg-white hover:bg-surface-card border border-stroke hover:border-primary/40 rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+              <span>Contacto</span>
+              <svg class="w-4 h-4 stroke-current text-content-secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
     </section>
 
     <!-- Sección: Proyectos -->
