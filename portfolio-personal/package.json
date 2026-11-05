@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-personal",
+  "version": "1.0.0",
+  "description": "Portfolio web personal - Facundo Federico Olguín (UX/UI Designer)",
+  "scripts": {
+    "build:css": "tailwindcss -i ./input.css -o ./assets/css/styles.css --minify",
+    "watch:css": "tailwindcss -i ./input.css -o ./assets/css/styles.css --watch"
+  },
+  "keywords": [
+    "portfolio",
+    "ux-ui",
+    "tailwind"
+  ],
+  "author": "Facundo Federico Olguín",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
