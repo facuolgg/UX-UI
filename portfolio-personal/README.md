@@ -8,18 +8,21 @@
 ## 🌐 Enlaces del Proyecto
 
 - **Sitio Web en Producción (Netlify):** [https://portfolio-facundo-olguin.netlify.app/](https://portfolio-facundo-olguin.netlify.app/)
-- **Diseño del Sistema en Figma:** [Figma Design File](https://www.figma.com/design/placeholder-portfolio-facundo-olguin) *(Placeholder)*
-- **Repositorio de la materia:** [https://github.com/facuolgg/UX-UI](https://github.com/facuolgg/UX-UI)
+- **Diseño del Sistema en Figma:** [Figma Design File](https://www.figma.com/design/bet43zNQs5e2NpfKDEXOsD/Dise%C3%B1o-base-Portfolio?node-id=0-1&t=hu7rAodSGAmQJlRJ-1)
+- **Repositorio del portfolio:** [https://github.com/facuolgg/UX-UI/tree/main/portfolio-personal](https://github.com/facuolgg/UX-UI)
 
 ---
 
-## 📸 Vista Previa del Sitio
+## 📸 Vista Previa del Sitio en Desktop
 
 <!-- Captura de pantalla de la versión Desktop y Mobile del portfolio -->
-![Vista Previa Portfolio Desktop](assets/img/og-image.png)
+![Vista Previa Portfolio Desktop](assets/img/capturas/sitio-desktop.png)
 
-*Placeholder: Esta captura se actualizará con una imagen real de 1200x630 una vez completado el primer despliegue en Netlify.*
 
+---
+## 📸 Vista Previa del Sitio en Mobile
+<!-- Captura de pantalla de la versión Mobile del portfolio -->
+![Vista Previa Portfolio Mobile](assets/img/capturas/sitio-mobile.png)
 ---
 
 ## 🛠️ Stack Tecnológico
@@ -96,44 +99,35 @@ El proyecto cuenta con el archivo `netlify.toml` preconfigurado en la raíz:
 ## 🖼️ Optimización de Imágenes (Hoja de Ruta WebP)
 
 > **Nota de ingeniería:** Para la entrega inicial se conservaron los archivos fuente en formato `.png` y `.jpg` en `assets/img/`.
-
-### Plan de migración a formato moderno de imagen:
-Para una posterior optimización de carga y ahorro de ancho de banda móvil, se recomienda convertir las capturas de proyectos a formato **WebP** o **AVIF**:
-```bash
-# Ejemplo con cwebp (WebP CLI)
-cwebp -q 82 assets/img/proyectos/coffee-hero.png -o assets/img/proyectos/coffee-hero.webp
-cwebp -q 82 assets/img/proyectos/seguros-hero.png -o assets/img/proyectos/seguros-hero.webp
-cwebp -q 82 assets/img/proyectos/openart-home.png -o assets/img/proyectos/openart-home.webp
-cwebp -q 82 assets/img/sobre-mi/foto-perfil.jpg -o assets/img/sobre-mi/foto-perfil.webp
-```
-**Ahorro proyectado:** reducción estimada del 65% al 80% en el peso de transferencia total.
-
----
-
-## 📊 Auditoría Lighthouse (Mobile) y Mejoras Pendientes
+## 📊 Auditoría Lighthouse (Desktop)
 
 ### Resultados y Cumplimiento Actual:
-- **Accesibilidad (A11y):** 100/100
-  - Ratio de contraste tipográfico superior a 4.5:1 (WCAG AA).
-  - Modal accesible con `role="dialog"`, `aria-modal="true"` y trampa de foco interactiva.
-  - Navegación móvil con estados `aria-expanded` y `aria-controls`.
-  - Skip-link funcional para teclado (*"Saltar al contenido"*).
-  - Foco visible universal con contorno accesible `:focus-visible`.
-  - Soporte a usuarios con preferencia de movimiento reducido (`prefers-reduced-motion`).
+- **Performance:** 100/100
+- **Accesibilidad:** 96/100
 - **SEO:** 100/100
-  - Etiquetas `<title>`, `<meta description>`, Open Graph y Twitter Cards completas.
-  - Etiquetas canónicas e idioma `lang="es"`.
 - **Mejores Prácticas:** 100/100
-  - Enlaces externos con `rel="noopener noreferrer"`.
-  - Atributos `width` y `height` en todas las imágenes para evitar CLS (Cumulative Layout Shift).
-  - Cabeceras de seguridad HTTP configuradas en `netlify.toml`.
 
-### Mejoras Pendientes Identificadas:
-1. **Conversión a WebP/AVIF:** Ejecutar la compresión de las imágenes de `assets/img/` tras la validación inicial.
-2. **Generación de `og-image.png` real:** Diseñar una tarjeta de vista previa de 1200x630px en Figma con tipografía Playfair y el monograma "FO", exportarla y reemplazar el placeholder actual.
-3. **PWA (Progressive Web App):** Incorporar un `manifest.json` y soporte offline básico si se requiere instalación en dispositivos móviles.
-
+![Captura de las resultados](assets/img/capturas/lighthouse-desktop.png)
 ---
+
+## 📊 Auditoría Lighthouse (Mobile)
+
+### Resultados y Cumplimiento Actual:
+- **Performance:** 99/100
+- **Accesibilidad:** 96/100
+- **SEO:** 100/100
+- **Mejores Prácticas:** 100/100
+
+![Captura de las resultados](assets/img/capturas/lighthouse-mobile.png)
+---
+
+## Comparación de la sección trayectoria del portfolio con el figma (Desktop)
+
+![Captura de pantalla](assets/img/capturas/comp-tray-desktop.png)
+
+## Comparación de la sección trayectoria del portfolio con el figma (Mobile)
+
+![Captura de pantalla](assets/img/capturas/comp-tray-mobile.png)
 
 ## 🤖 Declaración de Uso de Inteligencia Artificial
 
